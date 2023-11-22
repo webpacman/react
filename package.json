@@ -1,0 +1,11 @@
+{
+  "name": "webpacman-react",
+  "version": "1.0.0",
+  "description": "This is webpacman portfolio site",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "author": "Webpacman",
+  "license": "ISC"
+}
