@@ -1,27 +1,39 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.jsx',
+  devtool: 'inline-source-map',
+  entry: './src/index.tsx',
   output: {
     filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'build'),
     clean: true,
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+  },
+  devServer: {
+    static: './build',
+    hot: true,
+    port: 3000,
+    open: {
+      app: {
+        name: 'Google Chrome',
+      },
+    },
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-react', { targets: "defaults" }]
-            ]
-          }
-        }
       }
     ]
-  }
+  },
+  plugins: [new HtmlWebpackPlugin({
+    title: 'Сайт визитка',
+    template: './public/index.html',
+  })],
 };
