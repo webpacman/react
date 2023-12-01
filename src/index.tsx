@@ -1,8 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
+import './style.scss';
+import { App } from './App';
+
 const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = createRoot(rootElement);
-  root.render(<h1>Hello there</h1>);
+  root.render(<App />);
 }

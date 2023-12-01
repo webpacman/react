@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import 'webpack-dev-server';
 
@@ -38,12 +39,28 @@ module.exports = (env: EnvProps): webpack.Configuration => {
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/,
-        }
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            env.production ? MiniCssExtractPlugin.loader : "style-loader",
+            {
+              "loader": "css-loader",
+              options: {
+                modules: true
+              }
+            },
+            "sass-loader",
+          ],
+        },
       ]
     },
-    plugins: [new HtmlWebpackPlugin({
-      title: 'Сайт визитка',
-      template: './public/index.html',
-    })],
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'Сайт визитка',
+        template: './public/index.html',
+      }),
+      new MiniCssExtractPlugin(),
+    ],
   }
 };
