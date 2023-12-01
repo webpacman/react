@@ -1,9 +1,15 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+import path from 'path';
+import webpack from 'webpack';
 
-//console.debug(process.env.NODE_ENV);
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = (env) => {
+import 'webpack-dev-server';
+
+interface EnvProps {
+  production?: boolean;
+}
+
+module.exports = (env: EnvProps): webpack.Configuration => {
   return {
     mode: env.production ? 'production' : 'development',
     devtool: env.production ? 'source-map' : 'inline-source-map',
