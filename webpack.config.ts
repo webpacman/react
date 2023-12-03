@@ -1,66 +1,17 @@
 import path from 'path';
-import type webpack from 'webpack';
-
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
-import 'webpack-dev-server';
+import type { Configuration } from 'webpack';
+import { buildWebpackConfig } from './configs/webpack/buildWebpackConfig';
 
 interface EnvProps {
   production?: boolean;
 }
 
-module.exports = ({ production = false }: EnvProps): webpack.Configuration => {
-  return {
-    mode: production ? 'production' : 'development',
-    devtool: production ? 'source-map' : 'inline-source-map',
-    entry: './src/index.tsx',
-    output: {
-      filename: '[name].[contenthash].bundle.js',
-      path: path.resolve(__dirname, 'build'),
-      clean: true
-    },
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx']
-    },
-    devServer: {
-      static: './build',
-      hot: true,
-      port: 3000,
-      open: {
-        app: {
-          name: 'Google Chrome'
-        }
-      }
-    },
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.s[ac]ss$/i,
-          use: [
-            production ? MiniCssExtractPlugin.loader : 'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true
-              }
-            },
-            'sass-loader'
-          ]
-        }
-      ]
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: 'Сайт визитка',
-        template: './public/index.html'
-      }),
-      new MiniCssExtractPlugin()
-    ]
-  }
-};
+module.exports = ({ production = false }: EnvProps): Configuration => buildWebpackConfig({
+  paths: {
+    output: path.resolve(__dirname, 'build'),
+    devServer: path.resolve(__dirname, 'build'),
+    html: path.resolve(__dirname, 'public', 'index.html')
+  },
+  isProd: Boolean(production),
+  isDev: !production
+});

@@ -40,6 +40,21 @@ module.exports = {
               requireLast: false,
             },
         }],
-        "@typescript-eslint/strict-boolean-expressions": 'off'
+        "@typescript-eslint/strict-boolean-expressions": 'off',
+        "space-before-function-paren": ["error", {
+            "anonymous": "always", 
+            "named": "never", 
+            "asyncArrow": "always"
+        }],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always", 
+            "named": "never", 
+            "asyncArrow": "always"
+        }],
+        "@typescript-eslint/space-before-function-paren": ["error", {
+            "anonymous": "always", 
+            "named": "never", 
+            "asyncArrow": "always"
+        }]
     }
 }
