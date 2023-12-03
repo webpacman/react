@@ -12,7 +12,7 @@
     "allowJs": true,
     "moduleResolution": "node",
   },
-  "exclude": ["./.eslintrc.js"],
+  "exclude": ["node_modules"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
