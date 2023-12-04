@@ -18,7 +18,7 @@ export const buildWebpackConfig = ({ isDev, isProd, port = 3000, paths }: Webpac
     entry: './src/index.tsx',
     output: buildOutput(paths.output),
     resolve: buildResolve(paths),
-    module: buildModule(isProd),
+    module: buildModule(paths, isProd),
     plugins: buildPlugins(paths.html, isProd)
   };
 

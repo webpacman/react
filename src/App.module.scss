@@ -1,9 +1,7 @@
-@import '~scss/base';
-
 .App {
   background: $background-light-black-opacity;
 
   @include breakpoint(mobile) {
-    background: red;
+    background: $green;
   }
 }

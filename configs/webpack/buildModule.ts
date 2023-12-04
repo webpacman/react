@@ -1,7 +1,8 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { type Configuration } from 'webpack';
+import { type WebpackPathsProps } from './types';
 
-export function buildModule(isProd: boolean): Configuration['module'] {
+export function buildModule(paths: WebpackPathsProps, isProd: boolean): Configuration['module'] {
   return {
     rules: [
       {
@@ -19,7 +20,12 @@ export function buildModule(isProd: boolean): Configuration['module'] {
               modules: true
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import "${paths.static.css}/base.scss";`
+            }
+          }
         ]
       }
     ]
