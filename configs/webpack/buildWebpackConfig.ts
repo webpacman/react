@@ -17,7 +17,7 @@ export const buildWebpackConfig = ({ isDev, isProd, port = 3000, paths }: Webpac
     devtool: isProd ? 'source-map' : 'inline-source-map',
     entry: './src/index.tsx',
     output: buildOutput(paths.output),
-    resolve: buildResolve(),
+    resolve: buildResolve(paths),
     module: buildModule(isProd),
     plugins: buildPlugins(paths.html, isProd)
   };

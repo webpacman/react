@@ -10,7 +10,10 @@ module.exports = ({ production = false }: EnvProps): Configuration => buildWebpa
   paths: {
     output: path.resolve(__dirname, 'build'),
     devServer: path.resolve(__dirname, 'build'),
-    html: path.resolve(__dirname, 'public', 'index.html')
+    html: path.resolve(__dirname, 'public', 'index.html'),
+    static: {
+      css: path.resolve(__dirname, 'static', 'css')
+    }
   },
   isProd: Boolean(production),
   isDev: !production
