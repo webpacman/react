@@ -1,59 +1,70 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'standard-with-typescript',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
   ],
   overrides: [
     {
       env: {
-        node: true
+        node: true,
       },
       files: ['*.ts', '*.tsx', '*.js'],
       parserOptions: {
         project: ['./tsconfig.json'],
         ecmaFeatures: {
-          jsx: true
-        }
-      }
+          jsx: true,
+        },
+      },
     },
     {
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
-      files: ['./**/*.js']
-    }
+      files: ['./**/*.js'],
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: [
-    'react'
+    'react',
   ],
   rules: {
-    '@typescript-eslint/semi': 'off',
+    '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: {
         delimiter: 'semi',
-        requireLast: true
+        requireLast: true,
       },
       singleline: {
         delimiter: 'semi',
-        requireLast: false
-      }
+        requireLast: true,
+      },
     }],
     '@typescript-eslint/strict-boolean-expressions': 'off',
     'space-before-function-paren': ['error', {
       anonymous: 'always',
       named: 'never',
-      asyncArrow: 'always'
+      asyncArrow: 'always',
     }],
     '@typescript-eslint/space-before-function-paren': ['error', {
       anonymous: 'always',
       named: 'never',
-      asyncArrow: 'always'
-    }]
-  }
-}
+      asyncArrow: 'always',
+    }],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': ['error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'always-multiline',
+      enums: 'always-multiline',
+      generics: 'always-multiline',
+      tuples: 'always-multiline',
+    }],
+  },
+};

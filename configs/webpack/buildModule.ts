@@ -8,7 +8,7 @@ export function buildModule(paths: WebpackPathsProps, isProd: boolean): Configur
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,
@@ -17,17 +17,17 @@ export function buildModule(paths: WebpackPathsProps, isProd: boolean): Configur
           {
             loader: 'css-loader',
             options: {
-              modules: true
-            }
+              modules: true,
+            },
           },
           {
             loader: 'sass-loader',
             options: {
-              additionalData: `@import "${paths.static.css}/base.scss";`
-            }
-          }
-        ]
-      }
-    ]
-  }
+              additionalData: `@import "${paths.static.css}/base.scss";`,
+            },
+          },
+        ],
+      },
+    ],
+  };
 }

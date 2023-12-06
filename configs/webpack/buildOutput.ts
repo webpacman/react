@@ -4,6 +4,6 @@ export function buildOutput(outputPath: string): Configuration['output'] {
   return {
     filename: '[name].[contenthash].bundle.js',
     path: outputPath,
-    clean: true
+    clean: true,
   };
 }

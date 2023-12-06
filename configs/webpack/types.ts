@@ -3,6 +3,7 @@ interface WebpackStaticDirs {
 }
 
 export interface WebpackPathsProps {
+  src: string;
   output: string;
   devServer: string;
   html: string;

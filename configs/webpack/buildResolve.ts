@@ -5,7 +5,8 @@ export function buildResolve(paths: WebpackPathsProps): Configuration['resolve']
   return {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      scss: paths.static.css
-    }
+      scss: paths.static.css,
+      '@': paths.src,
+    },
   };
 }

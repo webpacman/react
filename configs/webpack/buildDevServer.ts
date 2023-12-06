@@ -5,10 +5,13 @@ export function buildDevServer(staticPath: string, port: number): Configuration[
     static: staticPath,
     hot: true,
     port,
+    client: {
+      overlay: true,
+    },
     open: {
       app: {
-        name: 'Google Chrome'
-      }
-    }
+        name: 'Google Chrome',
+      },
+    },
   };
 }

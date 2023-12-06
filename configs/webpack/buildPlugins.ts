@@ -5,14 +5,14 @@ import { type Configuration } from 'webpack';
 export function buildPlugins(htmlPath: string, isProd: boolean): Configuration['plugins'] {
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
-      title: 'Сайт визитка',
-      template: htmlPath
-    })
+      title: 'Шевчук Виталий Геннадьевич | Разработчик web приложений',
+      template: htmlPath,
+    }),
   ];
 
   if (isProd) {
     plugins.push(
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin(),
     );
   }
 

@@ -19,7 +19,7 @@ export const buildWebpackConfig = ({ isDev, isProd, port = 3000, paths }: Webpac
     output: buildOutput(paths.output),
     resolve: buildResolve(paths),
     module: buildModule(paths, isProd),
-    plugins: buildPlugins(paths.html, isProd)
+    plugins: buildPlugins(paths.html, isProd),
   };
 
   if (isDev) {
@@ -27,4 +27,4 @@ export const buildWebpackConfig = ({ isDev, isProd, port = 3000, paths }: Webpac
   }
 
   return webpackConfig;
-}
+};
