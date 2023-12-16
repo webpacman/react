@@ -1,6 +1,22 @@
 import React, { type FC } from 'react';
-import styles from './Books.module.scss';
-// interface BooksProps {}
+
 export const Books: FC = () => {
-  return <div className={styles.Books}>Books</div>;
+  return (
+    <>
+      <div className="scroll_id" id="books"></div>
+      <section
+        className="books section-grey block-center observer-section"
+        data-id="books"
+      >
+        <h2 className="second-title">Прочитанные книги</h2>
+
+        <p className="section-description">
+          Тут указаны не все прочитанные мной книги, а только те книги, которые
+          произвели на меня наибольшее впечатление.
+        </p>
+
+        <div className="books-list"></div>
+      </section>
+    </>
+  );
 };

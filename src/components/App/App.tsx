@@ -11,7 +11,6 @@ import { HeaderTop } from '../HeaderTop/HeaderTop';
 import { Interests } from '../Interests/Interests';
 import { Skills } from '../Skills/Skills';
 import { Work } from '../Work/Work';
-import styles from './App.module.scss';
 
 export const App = (): React.JSX.Element => {
   // const lang = useContext(LangContext);
@@ -19,18 +18,16 @@ export const App = (): React.JSX.Element => {
 
   return (
     <LangContextProvider>
-      <div className={styles.App}>
-        <HeaderTop />
-        <HeaderSection />
-        <About />
-        <Achievements />
-        <Skills />
-        <Work />
-        <Interests />
-        <Books />
-        <ContactMe />
-        <Footer />
-      </div>
+      <HeaderTop />
+      <HeaderSection />
+      <About />
+      <Achievements />
+      <Skills />
+      <Work />
+      <Interests />
+      <Books />
+      <ContactMe />
+      <Footer />
     </LangContextProvider>
   );
 };

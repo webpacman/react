@@ -1,0 +1,51 @@
+.block {
+  display: flex;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.alignNormal {
+  align-items: normal;
+}
+
+.alignStart {
+  align-items: flex-start;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
+}
+
+.justifyNormal {
+  justify-content: normal;
+}
+
+.justifyStart {
+  justify-content: flex-start;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.justifyBetween {
+  justify-content: space-between;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}

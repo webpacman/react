@@ -1,7 +1,0 @@
-.App {
-  background: $background-light-black-opacity;
-
-  @include breakpoint(mobile) {
-    background: $green;
-  }
-}
