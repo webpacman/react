@@ -1,0 +1,10 @@
+.description {
+  margin-bottom: 40px;
+  color: $black;
+  font-size: 18px;
+  text-align: center;
+
+  @include breakpoint(tablet) {
+    font-size: 16px;
+  }
+}

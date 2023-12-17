@@ -66,5 +66,7 @@ module.exports = {
       generics: 'always-multiline',
       tuples: 'always-multiline',
     }],
+    indent: 'off',
+    '@typescript-eslint/indent': ['error', 2, { ignoredNodes: ['TSTypeParameterInstantiation'] }],
   },
 };

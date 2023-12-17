@@ -1,5 +1,7 @@
 import { Section } from '@/common/Section';
+import { Title } from '@/ui/Title/Title';
 import React, { type FC } from 'react';
+import { List } from '../List/List';
 import styles from './Achievements.module.scss';
 
 export const Achievements: FC = () => {
@@ -10,9 +12,8 @@ export const Achievements: FC = () => {
       grey
       center
     >
-      <h2 className="second-title">Достижения</h2>
-
-      <div className="achievements-list"></div>
+      <Title as="h2">Достижения</Title>
+      <List />
     </Section>
   );
 };
