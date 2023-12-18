@@ -1,6 +1,22 @@
 import clsx from 'clsx';
-import React, { type FC, type PropsWithChildren } from 'react';
+import React, {
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  type PropsWithChildren,
+} from 'react';
 import styles from './Flex.module.scss';
+
+type Prefer<P, T> = P & Omit<T, keyof P>;
+
+type ElementPropsWithoutRef<T extends ElementType> = Pick<
+  ComponentPropsWithoutRef<T>,
+  keyof ComponentPropsWithoutRef<T>
+>;
+
+type OverwritableType<OwnProps, Type extends ElementType> = Prefer<
+  OwnProps,
+  ElementPropsWithoutRef<Type>
+>;
 
 export enum FlexDisplay {
   BLOCK = 'block',
@@ -27,25 +43,26 @@ export enum FlexDirection {
   COLUMN = 'column',
 }
 
-interface FlexProps {
+interface FlexProps<T> {
+  as?: T;
   display?: FlexDisplay;
   align?: FlexAlign;
   justify?: FlexJustify;
   direction?: FlexDirection;
-  isSection?: boolean; // TODO: refactor by typescript
   className?: string;
 }
 
-export const Flex: FC<PropsWithChildren<FlexProps>> = ({
+export const Flex = <T extends ElementType = 'div'>({
+  as,
   display = FlexDisplay.BLOCK,
   align,
   justify,
   direction,
   children,
-  isSection = false,
   className,
-}) => {
-  const Tag = isSection ? 'section' : 'div';
+  ...rest
+}: OverwritableType<PropsWithChildren<FlexProps<T>>, T>): JSX.Element => {
+  const Tag: ElementType = as ?? 'div';
 
   return (
     <Tag
@@ -56,6 +73,7 @@ export const Flex: FC<PropsWithChildren<FlexProps>> = ({
         direction && styles[direction],
         className
       )}
+      {...rest}
     >
       {children}
     </Tag>

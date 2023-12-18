@@ -21,9 +21,9 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
     <>
       <div className={styles.scrollId} id={scrollId} />
       <Flex
+        as="section"
         className={clsx(styles.Section, grey && styles.grey, className)}
         data-id={scrollId}
-        isSection
         align={center ? FlexAlign.CENTER : FlexAlign.NORMAL}
         justify={center ? FlexJustify.CENTER : FlexJustify.NORMAL}
       >
