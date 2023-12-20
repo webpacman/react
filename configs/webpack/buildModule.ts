@@ -28,6 +28,15 @@ export function buildModule(paths: WebpackPathsProps, isProd: boolean): Configur
           },
         ],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|webp)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   };
 }

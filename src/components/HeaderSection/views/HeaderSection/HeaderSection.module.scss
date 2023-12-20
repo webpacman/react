@@ -1,3 +1,6 @@
-.HeaderSection {
+$background-image: './pacman-bg.webp';
+
+.headerSection {
   display: block;
+  background-image: url($background-image);
 }
