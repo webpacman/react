@@ -30,7 +30,7 @@ export const useLangContext = (): LangContextProps => {
 };
 
 export const LangContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [lang, setLang] = useState<LangVariants>(LangVariants.ENG);
+  const [lang, setLang] = useState<LangVariants>(LangVariants.RU);
 
   const value = {
     lang,

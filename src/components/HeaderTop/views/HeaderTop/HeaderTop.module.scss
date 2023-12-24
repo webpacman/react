@@ -1,3 +1,11 @@
-.HeaderTop {
-  display: block;
+.headerTop {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: space-evenly;
+  background: $background-black-opacity;
+  color: $white;
 }

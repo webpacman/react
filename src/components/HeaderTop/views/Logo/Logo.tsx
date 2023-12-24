@@ -1,12 +1,22 @@
+import { useLang } from '@/services/LangToggler/hooks/useLang';
+import { Sections } from '@/types/sections';
+import { Link, LinkTheme } from '@/ui/Link';
+import { getAnchorLink } from '@/utils/getAnchorLink';
 import React, { type FC } from 'react';
-// import styles from './Logo.module.scss';
+import styles from './Logo.module.scss';
+import { translator } from './translator';
 
-interface LogoProps {}
+export const Logo: FC = () => {
+  const lang = useLang();
 
-export const Logo: FC<LogoProps> = () => {
   return (
-    <a href="#home" className="link logo block-center">
-      Виталий Шевчук
-    </a>
+    <Link
+      href={getAnchorLink(Sections.HOME)}
+      className={styles.logo}
+      center
+      theme={LinkTheme.WHITE}
+    >
+      {translator.title[lang]}
+    </Link>
   );
 };

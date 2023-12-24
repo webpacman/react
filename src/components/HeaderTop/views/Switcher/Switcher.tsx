@@ -1,29 +1,27 @@
-import React, { type FC } from 'react';
-// import styles from './Switcher.module.scss';
+import { Flex, FlexAlign, FlexJustify } from '@/common/Flex';
+import { LangVariants } from '@/services/LangToggler/LangTogglerContext';
+import React, { memo, type FC } from 'react';
+import { SwitchElement } from '../SwitchElement/SwitchElement';
+import styles from './Switcher.module.scss';
 
-interface SwitcherProps {}
+export const Switcher: FC = memo(() => {
+  // TODO: rerenders console.debug('Here');
 
-export const Switcher: FC<SwitcherProps> = () => {
   return (
-    <div className="switcher-container block-center">
-      <div className="switcher-wrapper">
-        <input type="radio" name="lang" id="ru" checked />
-        <label className="switcher" htmlFor="ru">
-          Ru
-        </label>
+    <Flex
+      align={FlexAlign.CENTER}
+      justify={FlexJustify.CENTER}
+      className={styles.wrapper}
+    >
+      <Flex align={FlexAlign.CENTER} className={styles.switcher}>
+        {Object.values(LangVariants).map((lang) => (
+          <SwitchElement key={lang} lang={lang} />
+        ))}
 
-        <input type="radio" name="lang" id="eng" />
-        <label className="switcher" htmlFor="eng">
-          Eng
-        </label>
-
-        <input type="radio" name="lang" id="chi" />
-        <label className="switcher" htmlFor="chi">
-          Сhi
-        </label>
-
-        <span className="lang-placeholder"></span>
-      </div>
-    </div>
+        <span className={styles.langPlaceholder} id="placeholder" />
+      </Flex>
+    </Flex>
   );
-};
+});
+
+Switcher.displayName = 'Switcher';

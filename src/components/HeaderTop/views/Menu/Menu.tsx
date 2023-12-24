@@ -1,56 +1,31 @@
-import React, { type FC } from 'react';
-// import styles from './Menu.module.scss';
-import HomeIcon from './home.svg';
+import { Sections } from '@/types/sections';
+import React, { useCallback, useState, type FC } from 'react';
+import { MenuElement } from '../MenuElement/MenuElement';
+import styles from './Menu.module.scss';
+import { useMenuData } from './useMenuData';
 
-interface MenuProps {}
+export const Menu: FC = () => {
+  const [activeSection, setActiveSection] = useState<Sections>(Sections.HOME);
 
-export const Menu: FC<MenuProps> = () => {
+  const data = useMenuData();
+
+  const clickHandler = useCallback((section: Sections): void => {
+    setActiveSection(section);
+  }, []);
+
   return (
-    <nav className="navigation">
-      <ul className="menu block-center">
-        <li className="menu-element block-center">
-          <a
-            className="link menu-element__link active home block-center"
-            href="#home"
+    <nav className={styles.navigation}>
+      <ul className={styles.menu}>
+        {data.map((menu) => (
+          <MenuElement
+            key={menu.section}
+            href={menu.section}
+            clickHandler={clickHandler}
+            active={activeSection === menu.section}
           >
-            <HomeIcon width={10} height={10} />
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#about-me">
-            Обо&nbsp;мне
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#achievements">
-            Достижения
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#skills">
-            Навыки
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#work">
-            Работа
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#interests">
-            Интересы
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#books">
-            Книги
-          </a>
-        </li>
-        <li className="menu-element block-center">
-          <a className="link menu-element__link" href="#contact-me">
-            Связаться
-          </a>
-        </li>
+            {menu.content}
+          </MenuElement>
+        ))}
       </ul>
     </nav>
   );

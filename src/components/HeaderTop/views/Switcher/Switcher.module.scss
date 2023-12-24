@@ -1,0 +1,50 @@
+.wrapper {
+  width: 260px;
+
+  @include breakpoint(laptop) {
+    width: 200px;
+  }
+
+  @include breakpoint(onlyTablet) {
+    width: 150px;
+  }
+
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
+}
+
+.switcher {
+  position: relative;
+  width: 135px;
+  height: 35px;
+  padding: 0 10px;
+  border-radius: 20px;
+  background: $green;
+  cursor: pointer;
+  opacity: .9;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include breakpoint(onlyTablet) {
+    width: 100px;
+  }
+}
+
+.langPlaceholder {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  height: 30px;
+  border-radius: 20px;
+  background: $white;
+  transition: left .25s ease-in-out;
+
+  @include breakpoint(onlyTablet) {
+    width: 30px;
+    height: 25px;
+  }
+}

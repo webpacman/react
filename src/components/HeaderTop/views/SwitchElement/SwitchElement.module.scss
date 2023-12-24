@@ -1,0 +1,46 @@
+.switch {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 calc(100% / 3);
+  color: $white;
+  cursor: pointer;
+  text-align: center;
+  transition: color .25s ease-in-out;
+
+  @include breakpoint(onlyTablet) {
+    font-size: 14px;
+  }
+}
+
+.radio {
+  display: none;
+
+  &:checked  + .switch {
+    color: $green;
+  }
+
+  &:nth-of-type(1):checked ~ span {
+    left: 9px;
+
+    @include breakpoint(onlyTablet) {
+      left: 8px;
+    }
+  }
+
+  &:nth-of-type(2):checked ~ span {
+    left: 47px;
+
+    @include breakpoint(onlyTablet) {
+      left: 35px;
+    }
+  }
+
+  &:nth-of-type(3):checked ~ span {
+    left: 86px;
+
+    @include breakpoint(onlyTablet) {
+      left: 63px;
+    }
+  }
+}
+

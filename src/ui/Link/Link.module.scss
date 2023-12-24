@@ -1,0 +1,27 @@
+.link {
+  text-decoration: none;
+  transition: opacity .25s ease;
+  
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.default {
+  color: $green;
+  fill: $green;
+}
+
+.white {
+  color: $white;
+  fill: $white;
+
+  &:hover {
+    color: $green;
+    fill: $green;
+  }
+}
+
+.center {
+  @include blockCenter;
+}

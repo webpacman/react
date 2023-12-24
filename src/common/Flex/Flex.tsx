@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, {
+  memo,
   type ComponentPropsWithoutRef,
   type ElementType,
   type PropsWithChildren,
@@ -52,7 +53,7 @@ interface FlexProps<T> {
   className?: string;
 }
 
-export const Flex = <T extends ElementType = 'div'>({
+const FlexWrapper = <T extends ElementType = 'div'>({
   as,
   display = FlexDisplay.BLOCK,
   align,
@@ -79,3 +80,6 @@ export const Flex = <T extends ElementType = 'div'>({
     </Tag>
   );
 };
+
+export const Flex = memo(FlexWrapper);
+Flex.displayName = 'Flex';
