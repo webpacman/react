@@ -1,0 +1,1 @@
+# Webpacman project on react, typescript with Cursor AI
