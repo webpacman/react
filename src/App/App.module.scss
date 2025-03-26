@@ -1,0 +1,9 @@
+@use "~/main.scss";
+
+.title {
+  color: $green;
+
+  @include device(mobile) {
+    color: $text-black;
+  }
+}
