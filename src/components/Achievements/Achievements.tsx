@@ -1,11 +1,15 @@
 import { FC, PropsWithChildren } from "react";
 
+import { Section } from "@/common/Section";
+import { SectionTitle } from "@/common/SectionTitle";
+
 import styles from "./Achievements.module.scss";
 
-interface AchievementsProps {}
-
-export const Achievements: FC<PropsWithChildren<AchievementsProps>> = ({
-  children,
-}) => {
-  return <div className={styles.wrapper}>{children}</div>;
+export const Achievements: FC<PropsWithChildren> = () => {
+  return (
+    <Section scrollId="achievements" className={styles.wrapper} grey>
+      <SectionTitle>Достижения</SectionTitle>
+      <div className="achievements-list"></div>
+    </Section>
+  );
 };
