@@ -12,14 +12,8 @@ import { Work } from "../Work/Work";
 export const App = () => {
   return (
     <>
-      <Header title="Виталий Шевчук" />
-      <Welcome>
-        <h1>Виталий Шевчук</h1>
-        <p>
-          Я - разработчик, который любит создавать красивые и функциональные
-          веб-приложения.
-        </p>
-      </Welcome>
+      <Header />
+      <Welcome />
       <AboutMe>
         <h2>Обо мне</h2>
         <p>

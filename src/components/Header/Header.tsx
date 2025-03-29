@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from "react";
 
+import { useLangContext } from "@/services/LangContext/LangContext";
+
 import styles from "./Header.module.scss";
 
-interface HeaderProps {
-  title: string;
-}
+export const Header: FC<PropsWithChildren> = () => {
+  const { lang } = useLangContext();
 
-export const Header: FC<PropsWithChildren<HeaderProps>> = ({ title }) => {
   return <div className={styles.header}>...</div>;
 };

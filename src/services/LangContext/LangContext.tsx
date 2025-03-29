@@ -1,19 +1,13 @@
 import {
   createContext,
-  Dispatch,
   FC,
   PropsWithChildren,
-  SetStateAction,
   useContext,
   useState,
 } from "react";
 
 import { LangVariant } from "./constants";
-
-export interface LangContextProps {
-  lang: LangVariant;
-  setLang: Dispatch<SetStateAction<LangVariant>>;
-}
+import { LangContextProps } from "./types";
 
 const LangContext = createContext<LangContextProps | undefined>(undefined);
 
