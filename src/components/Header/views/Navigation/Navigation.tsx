@@ -1,8 +1,6 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface NavigationProps {}
-
-export const Navigation: FC<PropsWithChildren<NavigationProps>> = () => {
+export const Navigation: FC = () => {
   return (
     <nav className="navigation">
       <ul className="menu block-center">

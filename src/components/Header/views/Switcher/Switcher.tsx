@@ -1,18 +1,16 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface SwitcherProps {}
-
-export const Switcher: FC<PropsWithChildren<SwitcherProps>> = () => {
+export const Switcher: FC = () => {
   return (
     <div className="switcher-container block-center">
       <div className="switcher-wrapper">
         <input type="radio" name="lang" id="ru" checked />
-        <label className="switcher" for="ru">
+        <label className="switcher" htmlFor="ru">
           Ru
         </label>
 
         <input type="radio" name="lang" id="eng" />
-        <label className="switcher" for="eng">
+        <label className="switcher" htmlFor="eng">
           Eng
         </label>
 

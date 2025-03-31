@@ -1,12 +1,10 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
 import { Logo } from "../Logo/Logo";
 import { Navigation } from "../Navigation/Navigation";
 import { Switcher } from "../Switcher/Switcher";
 
-interface HeaderProps {}
-
-export const HeaderTop: FC<PropsWithChildren<HeaderProps>> = () => {
+export const HeaderTop: FC = () => {
   return (
     <div className="header-top">
       <Logo />

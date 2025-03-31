@@ -1,13 +1,13 @@
-import { AboutMe } from "../AboutMe/AboutMe";
-import { Achievements } from "../Achievements/Achievements";
-import { Books } from "../Books/Books";
-import { ContactMe } from "../ContactMe/ContactMe";
-import { Footer } from "../Footer/Footer";
+import { AboutMe } from "../AboutMe";
+import { Achievements } from "../Achievements";
+import { Books } from "../Books";
+import { ContactMe } from "../ContactMe";
+import { Footer } from "../Footer";
 import { Header } from "../Header";
-import { Interests } from "../Interests/Interests";
-import { Skills } from "../Skills/Skills";
-import { Welcome } from "../Welcome/Welcome";
-import { Work } from "../Work/Work";
+import { Interests } from "../Interests";
+import { Skills } from "../Skills";
+import { Welcome } from "../Welcome";
+import { Work } from "../Work";
 
 export const App = () => {
   return (
