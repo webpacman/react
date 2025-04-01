@@ -1,0 +1,77 @@
+.wrapper {
+  width: 260px;
+
+  @include device(laptop) {
+    width: 200px;
+  }
+
+  @include device(tablet) {
+    width: 150px;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+  }
+}
+
+.switcher {
+  position: relative;
+  height: 35px;
+  width: 135px;
+  padding: 0 10px;
+
+  background: $green;
+  border-radius: 20px;
+  opacity: 0.9;
+
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include device(tablet) {
+    width: 100px;
+  }
+}
+
+.langPlaceholder {
+  width: 40px;
+  height: 30px;
+  background: $white;
+  position: absolute;
+  z-index: 1;
+  border-radius: 20px;
+
+  transition: left 0.25s ease-in-out;
+
+  &.ru {
+    left: 9px;
+  }
+
+  &.eng {
+    left: 47px;
+  }
+
+  &.chi {
+    left: 86px;
+  }
+
+  @include device(tablet) {
+    width: 30px;
+    height: 25px;
+
+    &.ru {
+      left: 8px;
+    }
+
+    &.eng {
+      left: 35px;
+    }
+
+    &.chi {
+      left: 63px;
+    }
+  }
+}

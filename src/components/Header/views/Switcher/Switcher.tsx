@@ -1,26 +1,24 @@
+import clsx from "clsx";
 import { FC } from "react";
 
+import { Flex, FlexAlign } from "@/common/Flex";
+import { LangVariant, useLang } from "@/services/LangContext";
+
+import { SwitchElement } from "../SwitchElement/SwitchElement";
+import styles from "./Switcher.module.scss";
+
 export const Switcher: FC = () => {
+  const lang = useLang();
+
   return (
-    <div className="switcher-container block-center">
-      <div className="switcher-wrapper">
-        <input type="radio" name="lang" id="ru" checked />
-        <label className="switcher" htmlFor="ru">
-          Ru
-        </label>
+    <Flex center className={styles.wrapper}>
+      <Flex align={FlexAlign.CENTER} className={styles.switcher}>
+        {Object.values(LangVariant).map((lang) => (
+          <SwitchElement key={lang} lang={lang} />
+        ))}
 
-        <input type="radio" name="lang" id="eng" />
-        <label className="switcher" htmlFor="eng">
-          Eng
-        </label>
-
-        <input type="radio" name="lang" id="chi" />
-        <label className="switcher" htmlFor="chi">
-          Сhi
-        </label>
-
-        <span className="lang-placeholder"></span>
-      </div>
-    </div>
+        <span className={clsx(styles.langPlaceholder, styles[lang])}></span>
+      </Flex>
+    </Flex>
   );
 };
