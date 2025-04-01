@@ -1,3 +1,5 @@
+import "~/main.scss";
+
 import { AboutMe } from "../AboutMe";
 import { Achievements } from "../Achievements";
 import { Books } from "../Books";

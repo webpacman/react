@@ -1,0 +1,32 @@
+.menu {
+  gap: 25px;
+
+  @include device(laptop) {
+    gap: 10px;
+  }
+
+  @include device(tablet) {
+    gap: 5px;
+  }
+
+  @include device(mobile) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.home {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+
+  @include device(laptop) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include device(tablet) {
+    width: 18px;
+    height: 18px;
+  }
+}

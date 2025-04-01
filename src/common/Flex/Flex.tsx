@@ -5,20 +5,21 @@ import styles from "./Flex.module.scss";
 
 export enum FlexDisplay {
   FLEX = "flex",
-  INLINE_FLEX = "inline-flex",
+  INLINE_FLEX = "inlineFlex",
 }
 
 export enum FlexJustify {
-  START = "justify-start",
-  CENTER = "justify-center",
-  END = "justify-end",
-  BETWEEN = "justify-between",
+  START = "justifyStart",
+  CENTER = "justifyCenter",
+  END = "justifyEnd",
+  BETWEEN = "justifyBetween",
+  EVENLY = "justifyEvenly",
 }
 
 export enum FlexAlign {
-  START = "align-start",
-  CENTER = "align-center",
-  END = "align-end",
+  START = "alignStart",
+  CENTER = "alignCenter",
+  END = "alignEnd",
 }
 
 type FlexProps<T extends ElementType = "div"> = {
