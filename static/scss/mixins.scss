@@ -2,27 +2,35 @@
 
 @mixin device($device) {
   @if $device == mobile {
-    @media (max-width: calc($tablet - 1px)) {
+    @media (max-width: $tablet) {
       @content;
     }
   } @else if $device == tablet {
-    @media (min-width: $tablet) and (max-width: calc($laptop - 1px)) {
+    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) {
       @content;
     }
   } @else if $device == laptop {
-    @media (min-width: $laptop) and (max-width: calc($desktop - 1px)) {
+    @media (min-width: calc($laptop + 1px)) and (max-width: $desktop) {
       @content;
     }
   } @else if $device == desktop {
-    @media (min-width: $desktop) {
+    @media (min-width: calc($desktop + 1px)) {
       @content;
     }
   } @else if $device == mobileTablet {
-    @media (max-width: calc($laptop - 1px)) {
+    @media (max-width: $laptop) {
       @content;
     }
   } @else if $device == laptopDesktop {
-    @media (min-width: $laptop) {
+    @media (min-width: calc($laptop + 1px)) {
+      @content;
+    }
+  } @else if $device == tabletLaptop {
+    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) {
+      @content;
+    }
+  } @else if $device == tabletLandscape {
+    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) and (orientation: landscape) {
       @content;
     }
   }

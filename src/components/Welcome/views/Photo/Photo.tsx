@@ -1,9 +1,9 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
+
+import VshevchukPhoto from "~/images/vshevchuk2.png";
 
 import styles from "./Photo.module.scss";
 
-interface PhotoProps {}
-
-export const Photo: FC<PropsWithChildren<PhotoProps>> = ({ children }) => {
-  return <div className={styles.wrapper}>{children}</div>;
+export const Photo: FC = () => {
+  return <img className={styles.photo} src={VshevchukPhoto} alt="photo" />;
 };

@@ -1,3 +1,29 @@
 .wrapper {
-  color: blueviolet;
+  position: relative;
+  bottom: $header-height;
+  height: 110vh;
+  clip-path: polygon(100% 0, 100% 86%, 54% 100%, 0 88%, 0 0);
+
+  @include device(mobile) {
+    bottom: 0;
+    height: 105vh;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: calc(100vh - $header-height);
+  top: $header-height;
+  color: $white;
+
+  @include device(mobileTablet) {
+    flex-direction: column;
+  }
+
+  @include device(mobile) {
+    top: 0;
+    height: inherit;
+    justify-content: space-between;
+  }
 }

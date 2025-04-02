@@ -1,0 +1,17 @@
+.background {
+  position: absolute;
+  height: inherit;
+  width: 100%;
+  object-fit: cover;
+  filter: blur(1px) opacity(0.9) saturate(200%);
+}
+
+.backgroundWrapper {
+  position: absolute;
+  height: inherit;
+  width: 100%;
+
+  background: $background-light-black-opacity;
+
+  z-index: 1;
+}

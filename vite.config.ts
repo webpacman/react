@@ -11,14 +11,14 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "~/global.scss" as *;`,
+        additionalData: `@use "~/scss/global.scss" as *;`,
       },
     },
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "~": path.resolve(__dirname, "static", "scss"),
+      "~": path.resolve(__dirname, "static"),
     },
   },
 });

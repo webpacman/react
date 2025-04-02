@@ -1,0 +1,26 @@
+.photo {
+  position: absolute;
+  z-index: 3;
+  bottom: -100px;
+  left: 0;
+  width: 50%;
+
+  @include device(tablet) {
+    position: relative;
+    width: 90%;
+    bottom: -200px;
+    order: 2;
+  }
+
+  @include device(mobile) {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    order: 2;
+  }
+
+  @include device(tabletLandscape) {
+    width: 50%;
+    bottom: -230px;
+  }
+}

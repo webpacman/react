@@ -1,0 +1,96 @@
+.wrapper {
+  width: calc(100% - 480px);
+  padding: 20px;
+  margin-left: auto;
+  background: $background-black-opacity;
+  color: $white;
+  text-align: center;
+
+  @include device(desktop) {
+    width: 80%;
+  }
+
+  @include device(laptop) {
+    width: 75%;
+  }
+
+  @include device(mobileTablet) {
+    position: relative;
+    top: 65px;
+    width: 100%;
+    background: none;
+  }
+
+  @include device(tablet) {
+    position: absolute;
+    padding: 0;
+  }
+}
+
+.name {
+  font-size: 58px;
+  line-height: 74px;
+
+  @include device(laptop) {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  @include device(mobile) {
+    font-size: 34px;
+    line-height: 74px;
+  }
+}
+
+.description {
+  display: inline-block;
+  overflow: hidden;
+  width: 672px;
+  border-right: 3px solid transparent;
+  margin: 0 auto;
+  animation: cursor 0.75s 8, print-text 5s steps(58);
+  font-size: 22px;
+  line-height: 1.5em;
+  white-space: nowrap;
+
+  @include device(laptop) {
+    width: 500px;
+    font-size: 16px;
+  }
+
+  @include device(tablet) {
+    width: 615px;
+    font-size: 20px;
+  }
+
+  @include device(mobile) {
+    width: 90%;
+    animation: none;
+    font-size: 18px;
+    white-space: normal;
+
+    & span {
+      white-space: nowrap;
+    }
+  }
+}
+
+@keyframes cursor {
+  0% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: $white;
+  }
+
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes print-text {
+  from {
+    width: 0;
+  }
+}
