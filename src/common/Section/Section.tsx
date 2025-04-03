@@ -8,12 +8,14 @@ interface SectionProps {
   scrollId: string;
   grey?: boolean;
   className?: string;
+  center?: boolean;
 }
 
 export const Section: FC<PropsWithChildren<SectionProps>> = ({
   children,
   scrollId,
   grey = false,
+  center = false,
   className,
 }) => {
   // TODO: add observer
@@ -23,7 +25,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
       <div className={styles.scrollId} id={scrollId} />
       <Flex
         tag="section"
-        center
+        center={center}
         className={clsx(styles.section, grey && styles.grey, className)}
         data-id={scrollId}
       >

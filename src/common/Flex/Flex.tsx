@@ -22,11 +22,17 @@ export enum FlexAlign {
   END = "alignEnd",
 }
 
+export enum FlexDirection {
+  ROW = "row",
+  COLUMN = "column",
+}
+
 type FlexProps<T extends ElementType = "div"> = {
   children: ReactNode;
   display?: FlexDisplay;
   justify?: FlexJustify;
   align?: FlexAlign;
+  direction?: FlexDirection;
   center?: boolean;
   className?: string;
   tag?: T;
@@ -37,6 +43,7 @@ export const Flex = <T extends ElementType = "div">({
   display = FlexDisplay.FLEX,
   justify,
   align,
+  direction,
   center = false,
   className,
   tag = "div" as T,
@@ -50,6 +57,7 @@ export const Flex = <T extends ElementType = "div">({
         styles[display],
         justify && styles[justify],
         align && styles[align],
+        direction && styles[direction],
         center && styles.center,
         className
       )}

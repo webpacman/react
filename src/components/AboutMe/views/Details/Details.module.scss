@@ -1,0 +1,7 @@
+.wrapper {
+  max-width: 50%;
+
+  @include device(mobileTablet) {
+    max-width: 100%;
+  }
+}

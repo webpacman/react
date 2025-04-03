@@ -1,0 +1,18 @@
+.description {
+  font-size: 20px;
+  color: $text;
+  margin-bottom: 15px;
+  text-align: justify;
+
+  &.gray {
+    color: $gray;
+  }
+
+  @include device(laptop) {
+    font-size: 18px;
+  }
+
+  @include device(mobileTablet) {
+    font-size: 16px;
+  }
+}

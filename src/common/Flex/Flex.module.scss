@@ -52,6 +52,15 @@
   align-items: baseline;
 }
 
+// Direction
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
 .center {
   justify-content: center;
   align-items: center;

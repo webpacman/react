@@ -1,0 +1,58 @@
+.wrapper {
+  margin-bottom: 15px;
+
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.iframe {
+  border-radius: 10px;
+  filter: drop-shadow(10px 10px 10px var(--background-black-opacity));
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.supportButton {
+  position: relative;
+  height: 45px;
+  padding: 0 15px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 45px;
+  background: $green;
+  color: $white;
+  text-decoration: none;
+  border-radius: 4px;
+  opacity: 0.9;
+  transition: 0.1s ease;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 2px solid $background-light-black-opacity;
+    border-radius: 4px;
+    transform: rotate(-5deg);
+    transition: all 0.25s ease;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover::before {
+    transform: rotate(0);
+  }
+}
