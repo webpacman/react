@@ -1,8 +1,8 @@
 .aboutMe {
   gap: 20px;
+  padding-top: 0;
 
-  @include device(mobileTablet) {
-    flex-direction: column;
+  @include device(mobile) {
     padding: 20px;
   }
 }

@@ -1,0 +1,21 @@
+.controls {
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot {
+  display: inline-block;
+  width: 40px;
+  height: 8px;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 20%);
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &.active,
+  &:hover {
+    background: $green;
+  }
+}

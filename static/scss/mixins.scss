@@ -6,15 +6,15 @@
       @content;
     }
   } @else if $device == tablet {
-    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) {
+    @media (width >= calc($tablet + 1px)) and (max-width: $laptop) {
       @content;
     }
   } @else if $device == laptop {
-    @media (min-width: calc($laptop + 1px)) and (max-width: $desktop) {
+    @media (width >= calc($laptop + 1px)) and (max-width: $desktop) {
       @content;
     }
   } @else if $device == desktop {
-    @media (min-width: calc($desktop + 1px)) {
+    @media (width >= calc($desktop + 1px)) {
       @content;
     }
   } @else if $device == mobileTablet {
@@ -22,21 +22,21 @@
       @content;
     }
   } @else if $device == laptopDesktop {
-    @media (min-width: calc($laptop + 1px)) {
+    @media (width >= calc($laptop + 1px)) {
       @content;
     }
   } @else if $device == tabletLaptop {
-    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) {
+    @media (width >= calc($tablet + 1px)) and (max-width: $laptop) {
       @content;
     }
   } @else if $device == tabletLandscape {
-    @media (min-width: calc($tablet + 1px)) and (max-width: $laptop) and (orientation: landscape) {
+    @media (width >= calc($tablet + 1px)) and (max-width: $laptop) and (orientation: landscape) {
       @content;
     }
   }
 }
 
-@mixin blockCenter {
+@mixin block-center {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,3 +1,40 @@
 .wrapper {
-  color: blue;
+  flex-direction: column;
+  position: relative;
+  padding: 60px 0;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border: 100px solid transparent;
+  }
+
+  &::before {
+    border-top: 30px solid $white;
+    top: 0;
+  }
+
+  &::after {
+    border-top: 40px solid $background-grey;
+    bottom: -140px;
+  }
+
+  @include device(mobile) {
+    padding: 40px 0;
+  }
+}
+
+.image {
+  width: 100%;
+  max-width: 250px;
+
+  @include device(tabletLaptop) {
+    max-width: 200px;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+    max-width: 100%;
+  }
 }

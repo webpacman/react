@@ -27,8 +27,8 @@ export enum FlexDirection {
   COLUMN = "column",
 }
 
-type FlexProps<T extends ElementType = "div"> = {
-  children: ReactNode;
+type FlexProps<T extends ElementType = "div" | "img"> = {
+  children?: ReactNode;
   display?: FlexDisplay;
   justify?: FlexJustify;
   align?: FlexAlign;

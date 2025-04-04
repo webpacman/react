@@ -4,19 +4,20 @@
   margin-bottom: 40px;
 
   &::after {
-    $underlineWidth: 60px;
+    $underline-width: 60px;
 
     content: "";
-
     display: inline-block;
-    width: $underlineWidth;
+    width: $underline-width;
     height: 2px;
-
     position: absolute;
     bottom: -7px;
-    left: calc(50% - $underlineWidth / 2);
+    left: calc(50% - $underline-width / 2);
+    background: $green;
+  }
 
-    background: var($green);
+  @include device(mobile) {
+    margin-bottom: 20px;
   }
 }
 

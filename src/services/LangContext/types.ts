@@ -7,8 +7,11 @@ export interface LangContextProps {
   setLang: Dispatch<SetStateAction<LangVariant>>;
 }
 
-export type TranslatorItem = Record<LangVariant, string | ReactNode>;
+export type TranslatorItem<T = string | ReactNode> = Record<LangVariant, T>;
 
-export type Translator<T extends string> = Record<T, TranslatorItem>;
+export type Translator<T extends string, K = string | ReactNode> = Record<
+  T,
+  TranslatorItem<K>
+>;
 
 export type TranslatorArray = TranslatorItem[];

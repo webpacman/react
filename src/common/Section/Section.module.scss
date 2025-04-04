@@ -1,7 +1,11 @@
 .section {
-  padding: 0 60px 60px;
+  padding: 60px;
+
+  @include device(mobileTablet) {
+    flex-direction: column;
+  }
 }
 
 .grey {
-  background: var($background-grey);
+  background: $background-grey;
 }
