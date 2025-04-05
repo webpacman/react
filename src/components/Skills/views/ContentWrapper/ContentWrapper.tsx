@@ -1,17 +1,16 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, useState } from "react";
 
-import { Detail } from "../Detail/Detail";
-import { List } from "../List/List";
+import { SkillFilter } from "../../constants";
+import { Filters } from "../Filters/Filters";
+import { ListWrapper } from "../ListWrapper/ListWrapper";
 
-interface SkillsWrapperProps {}
+export const ContentWrapper: FC = () => {
+  const [filter, setFilter] = useState<SkillFilter>(SkillFilter.ALL);
 
-export const ContentWrapper: FC<PropsWithChildren<SkillsWrapperProps>> = ({
-  children,
-}) => {
   return (
-    <div className="skills-wrapper">
-      <List />
-      <Detail />
-    </div>
+    <>
+      <Filters filter={filter} setFilter={setFilter} />
+      <ListWrapper filter={filter} />
+    </>
   );
 };

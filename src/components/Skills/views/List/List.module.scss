@@ -1,0 +1,119 @@
+.wrapper {
+  flex: 1 0 70%;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 70%;
+
+  @include device(laptop) {
+    gap: 10px;
+  }
+
+  @include device(mobileTablet) {
+    order: 2;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+  }
+}
+
+.skill {
+  gap: 20px;
+  flex: 1 1 31%;
+  max-width: 31%;
+  max-height: 80px;
+  padding: 10px 10px 10px 20px;
+  box-shadow: $box-shadow-color;
+  border-radius: 3px;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.active,
+  &:hover {
+    outline: 2px solid $green;
+    transform: scale(105%);
+  }
+
+  @include device(mobileTablet) {
+    flex: 1 1 32%;
+    max-width: 32%;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    flex-wrap: wrap;
+    transition: max-height 0.2s ease;
+
+    &.show {
+      max-height: 1000px;
+      gap: 10px;
+    }
+
+    &.active,
+    &:hover {
+      transform: unset;
+      outline: none;
+    }
+
+    &.active {
+      outline: 2px solid $green;
+    }
+  }
+}
+
+.skillWrapper {
+  gap: 20px;
+  height: 100%;
+  max-height: 80px;
+
+  @include device(laptop) {
+    gap: 15px;
+  }
+
+  @include device(mobile) {
+    height: 80px;
+  }
+}
+
+.icon {
+  width: 48px;
+  max-width: 48px;
+  flex: 1 1 30%;
+  max-height: 100%;
+
+  @include device(laptop) {
+    width: 40px;
+    max-width: 40px;
+  }
+
+  @include device(mobileTablet) {
+    flex: 1 1 30%;
+  }
+
+  @include device(mobile) {
+    height: 48px;
+    flex: auto;
+  }
+}
+
+.title {
+  font-size: 24px;
+
+  @include device(laptop) {
+    font-size: 16px;
+  }
+
+  @include device(mobileTablet) {
+    font-size: 18px;
+    flex: 1 1 60%;
+  }
+}
+
+.detail {
+  min-width: 100%;
+}

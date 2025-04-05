@@ -1,23 +1,50 @@
-import { FC, PropsWithChildren } from "react";
+import clsx from "clsx";
+import { FC } from "react";
 
-interface DetailProps {}
+import { Flex, FlexAlign, FlexDirection } from "@/common/Flex";
 
-export const Detail: FC<PropsWithChildren<DetailProps>> = ({ children }) => {
+import { SkillName } from "../../constants";
+import styles from "./Detail.module.scss";
+import { useSkillDetail } from "./useSkillDetail";
+
+interface DetailProps {
+  skill: SkillName;
+  full?: boolean;
+  className?: string;
+}
+
+export const Detail: FC<DetailProps> = ({ skill, full = false, className }) => {
+  const { percent, description, title, icon: Icon } = useSkillDetail(skill);
+
   return (
-    <div className="skill-card right">
-      <div className="skill-card__title">
-        <img src="" alt="" className="skill-card__image" />
-        <span className="skill-card__name"></span>
-      </div>
+    <Flex
+      direction={FlexDirection.COLUMN}
+      className={clsx(
+        full ? styles.fullWrapper : styles.smallWrapper,
+        className
+      )}
+    >
+      {full && (
+        <Flex align={FlexAlign.CENTER} className={styles.header}>
+          <Icon className={styles.icon} />
+          <span className={styles.title}>{title}</span>
+        </Flex>
+      )}
 
-      <div className="skill-card__progress">
-        <span className="skill-card__progress-percent"></span>
-        <div className="skill-card__progress-bar">
-          <div></div>
-        </div>
-      </div>
+      {percent !== undefined && (
+        <Flex
+          direction={FlexDirection.COLUMN}
+          align={FlexAlign.END}
+          className={styles.progress}
+        >
+          <span className={styles.progressPercent}>{percent}%</span>
+          <div className={styles.progressBar}>
+            <div style={{ width: `${percent}%` }}></div>
+          </div>
+        </Flex>
+      )}
 
-      <p className="skill-card__description"></p>
-    </div>
+      <p className={styles.description}>{description}</p>
+    </Flex>
   );
 };

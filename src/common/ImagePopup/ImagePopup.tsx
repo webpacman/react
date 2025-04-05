@@ -52,6 +52,7 @@ export const ImagePopup: FC<ImagePopupProps & ImageProps> = ({
           className
         )}
         onClick={onClickHandler}
+        loading="lazy"
       />
       {fullScreen && <span className={styles.description}>{description}</span>}
     </Flex>
