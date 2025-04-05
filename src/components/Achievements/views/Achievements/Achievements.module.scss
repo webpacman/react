@@ -24,17 +24,3 @@
     padding: 40px 0;
   }
 }
-
-.image {
-  width: 100%;
-  max-width: 250px;
-
-  @include device(tabletLaptop) {
-    max-width: 200px;
-  }
-
-  @include device(mobile) {
-    width: 100%;
-    max-width: 100%;
-  }
-}

@@ -4,11 +4,13 @@
   height: 100%;
   position: relative;
 
-  @include device(mobile) {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+  &:not(.fullScreen) {
+    @include device(mobile) {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
   }
 }
 
@@ -19,9 +21,11 @@
   align-items: center;
   justify-content: center;
 
-  @include device(mobile) {
-    padding: 20px;
-    max-width: 65%;
+  &:not(.fullScreenImage) {
+    @include device(mobile) {
+      padding: 20px;
+      max-width: 65%;
+    }
   }
 }
 

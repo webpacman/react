@@ -1,0 +1,116 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $background-black-opacity;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  &.show {
+    opacity: 1;
+    animation: fadeIn 0.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  & > *:last-child {
+    transform: scale(50%);
+    transition: all 0.2s ease;
+  }
+
+  &.show > *:last-child {
+    transform: scale(100%);
+    animation: scaleIn 0.2s;
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(50%);
+    }
+
+    to {
+      transform: scale(100%);
+    }
+  }
+
+  &.hide > *:last-child {
+    transform: scale(50%);
+    transition: all 0.2s ease;
+  }
+}
+
+.popup {
+  position: relative;
+  width: 90%;
+  height: inherit;
+  max-width: 1200px;
+  background-color: transparent;
+}
+
+.close {
+  @include reset-button;
+
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1001;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: $background-white;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &:hover::after,
+  &:hover::before {
+    background-color: $white;
+  }
+
+  @include device(mobile) {
+    right: 0;
+    color: $white;
+  }
+}
+
+.description {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,46 @@
+.container {
+  gap: 20px;
+}
+
+.fullScreen {
+  height: 100%;
+  max-height: 80%;
+}
+
+.description {
+  color: $white;
+  font-size: 18px;
+
+  @include device(mobile) {
+    text-align: center;
+  }
+}
+
+.imageFullScreen {
+  width: auto;
+  max-height: 100%;
+
+  @include device(mobile) {
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  max-width: 250px;
+  cursor: pointer;
+
+  &.imageFullScreen {
+    cursor: default;
+    max-width: 100%;
+  }
+
+  @include device(tabletLaptop) {
+    max-width: 200px;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+    max-width: 100%;
+  }
+}

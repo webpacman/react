@@ -11,6 +11,7 @@ interface SliderArrowsProps {
   onNext: () => void;
   isPrevDisabled: boolean;
   isNextDisabled: boolean;
+  fullScreen?: boolean;
 }
 
 export const SliderArrows: FC<SliderArrowsProps> = ({
@@ -18,6 +19,7 @@ export const SliderArrows: FC<SliderArrowsProps> = ({
   onNext,
   isPrevDisabled,
   isNextDisabled,
+  fullScreen,
 }) => {
   return (
     <>
@@ -25,7 +27,11 @@ export const SliderArrows: FC<SliderArrowsProps> = ({
         tag="button"
         center
         display={FlexDisplay.INLINE_FLEX}
-        className={clsx(styles.arrow, styles.prev)}
+        className={clsx(
+          styles.arrow,
+          styles.prev,
+          fullScreen && styles.fullScreen
+        )}
         onClick={onPrev}
         disabled={isPrevDisabled}
         aria-label="Предыдущий слайд"
@@ -36,7 +42,11 @@ export const SliderArrows: FC<SliderArrowsProps> = ({
         tag="button"
         center
         display={FlexDisplay.INLINE_FLEX}
-        className={clsx(styles.arrow, styles.next)}
+        className={clsx(
+          styles.arrow,
+          styles.next,
+          fullScreen && styles.fullScreen
+        )}
         onClick={onNext}
         disabled={isNextDisabled}
         aria-label="Следующий слайд"

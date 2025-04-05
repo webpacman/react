@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   FC,
   ReactNode,
@@ -19,10 +20,6 @@ interface SliderProps {
    * Количество элементов в слайдере на одной странице
    */
   countInView?: number;
-  /**
-   * Количество элементов в слайдере на одной странице для мобильных устройств
-   */
-  mobileCountInView?: number;
   /**
    * Начальный слайд
    */
@@ -52,6 +49,10 @@ interface SliderProps {
    */
   infinity?: boolean;
   /**
+   * Полноэкранный режим
+   */
+  fullScreen?: boolean;
+  /**
    * Данные слайдера
    */
   sliderData: ReactNode[];
@@ -59,7 +60,6 @@ interface SliderProps {
 
 export const Slider: FC<SliderProps> = ({
   countInView = 3,
-  mobileCountInView = 1,
   startsWith = 1,
   centered = false,
   autoplay = false,
@@ -67,6 +67,7 @@ export const Slider: FC<SliderProps> = ({
   withArrows = false,
   withControls = true,
   infinity = false,
+  fullScreen = false,
   sliderData,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(startsWith - 1);
@@ -75,18 +76,17 @@ export const Slider: FC<SliderProps> = ({
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const totalItems = sliderData.length;
-  const effectiveCountInView = isMobile ? mobileCountInView : countInView;
-  const totalSlides = Math.ceil(totalItems / effectiveCountInView);
+  const totalSlides = Math.ceil(totalItems / countInView);
 
-  const itemWidth = 100 / effectiveCountInView;
+  const itemWidth = 100 / countInView;
 
   const translateX = useMemo(
-    () => currentSlide * effectiveCountInView * itemWidth,
-    [currentSlide, effectiveCountInView, itemWidth]
+    () => currentSlide * countInView * itemWidth,
+    [currentSlide, countInView, itemWidth]
   );
 
   const handleNext = useCallback(() => {
-    if (totalItems <= effectiveCountInView) return;
+    if (totalItems <= countInView) return;
 
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -102,7 +102,7 @@ export const Slider: FC<SliderProps> = ({
     }
   }, [
     totalItems,
-    effectiveCountInView,
+    countInView,
     isTransitioning,
     currentSlide,
     totalSlides,
@@ -110,7 +110,7 @@ export const Slider: FC<SliderProps> = ({
   ]);
 
   const handlePrev = useCallback(() => {
-    if (totalItems <= effectiveCountInView) return;
+    if (totalItems <= countInView) return;
 
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -126,7 +126,7 @@ export const Slider: FC<SliderProps> = ({
     }
   }, [
     totalItems,
-    effectiveCountInView,
+    countInView,
     isTransitioning,
     currentSlide,
     infinity,
@@ -145,7 +145,7 @@ export const Slider: FC<SliderProps> = ({
 
   const handleSwipe = useCallback(
     (direction: "next" | "prev") => {
-      if (isMobile) return;
+      if (isMobile && !fullScreen) return;
 
       if (direction === "next") {
         handleNext();
@@ -153,7 +153,7 @@ export const Slider: FC<SliderProps> = ({
         handlePrev();
       }
     },
-    [handleNext, handlePrev, isMobile]
+    [fullScreen, handleNext, handlePrev, isMobile]
   );
 
   const handleTransitionEnd = useCallback(() => {
@@ -161,7 +161,7 @@ export const Slider: FC<SliderProps> = ({
   }, []);
 
   useEffect(() => {
-    if (autoplay && totalItems > effectiveCountInView && !isMobile) {
+    if (autoplay && totalItems > countInView && !isMobile) {
       const interval = setInterval(handleNext, autoPlayInterval * 1000);
       return () => clearInterval(interval);
     }
@@ -170,7 +170,7 @@ export const Slider: FC<SliderProps> = ({
     autoPlayInterval,
     handleNext,
     totalItems,
-    effectiveCountInView,
+    countInView,
     isMobile,
   ]);
 
@@ -184,7 +184,7 @@ export const Slider: FC<SliderProps> = ({
   }, [handleTransitionEnd]);
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, fullScreen && styles.fullScreen)}>
       <SliderList
         sliderData={sliderData}
         sliderRef={sliderRef}
@@ -194,10 +194,12 @@ export const Slider: FC<SliderProps> = ({
         translateX={translateX}
         isTransitioning={isTransitioning}
         onSwipe={handleSwipe}
+        fullScreen={fullScreen}
       />
 
-      {withArrows && !isMobile && totalItems > effectiveCountInView && (
+      {withArrows && !isMobile && totalItems > countInView && (
         <SliderArrows
+          fullScreen={fullScreen}
           onPrev={handlePrev}
           onNext={handleNext}
           isPrevDisabled={!infinity && currentSlide === 0}
@@ -205,7 +207,7 @@ export const Slider: FC<SliderProps> = ({
         />
       )}
 
-      {withControls && !isMobile && totalItems > effectiveCountInView && (
+      {withControls && !isMobile && totalItems > countInView && (
         <SliderDots
           totalSlides={totalSlides}
           currentSlide={currentSlide}

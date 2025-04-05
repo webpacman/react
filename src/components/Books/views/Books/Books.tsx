@@ -2,24 +2,22 @@ import { FC, PropsWithChildren } from "react";
 
 import { Section } from "@/common/Section";
 import { SectionDescription } from "@/common/SectionDescription";
-import { Slider } from "@/common/Slider";
 import { Title } from "@/common/Title";
+import { useLang } from "@/services/LangContext";
 
+import { List } from "../List/List";
 import styles from "./Books.module.scss";
-import { useBooks } from "./useBooks";
+import { translator } from "./translator";
 
 export const Books: FC<PropsWithChildren> = () => {
-  const books = useBooks();
+  const lang = useLang();
 
   return (
     <Section scrollId="books" className={styles.wrapper} center grey>
-      <Title as="h2">Прочитанные книги</Title>
-      <SectionDescription>
-        Тут указаны не все прочитанные мной книги, а только те книги, которые
-        произвели на меня наибольшее впечатление.
-      </SectionDescription>
+      <Title as="h2">{translator.title[lang]}</Title>
+      <SectionDescription>{translator.description[lang]}</SectionDescription>
 
-      <Slider sliderData={books} centered autoplay infinity countInView={4} />
+      <List />
     </Section>
   );
 };
