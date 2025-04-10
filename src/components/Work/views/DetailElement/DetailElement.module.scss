@@ -1,0 +1,11 @@
+.element {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: $light-gray;
+  transition: background-color 0.25s ease;
+  cursor: default;
+
+  &:hover {
+    background-color: rgb(158 158 158 / 60%);
+  }
+}

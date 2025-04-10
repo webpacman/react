@@ -1,0 +1,9 @@
+.project {
+  position: relative;
+  color: $white;
+  background-color: $green-opacity;
+
+  &:hover {
+    background-color: $green;
+  }
+}

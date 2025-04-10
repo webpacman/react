@@ -1,0 +1,21 @@
+@use "~/scss/mixins" as *;
+
+:root {
+  --wrapper: 900px;
+  --element: 400px;
+}
+
+@include device(mobileTablet) {
+  :root {
+    --wrapper: 700px;
+    --element: 300px;
+  }
+}
+
+$year: 40px;
+$border-left: 3px;
+$margin: calc(var(--wrapper) / 2 - var(--element));
+$indent-before: calc(0px - $margin);
+$indent-after: calc(0px - $margin - $year / 2);
+$animation-hidden: calc(110vw / 2);
+$animation-end-margin: 10px;

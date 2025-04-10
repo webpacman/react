@@ -1,0 +1,153 @@
+@use "../../scss/variables" as *;
+
+.element {
+  position: relative;
+  width: var(--element);
+  padding: 10px;
+  box-shadow: $box-shadow-color;
+  border-radius: 2px;
+  border-left: $border-left solid $green;
+  opacity: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc($year / 2);
+    display: inline-block;
+    width: $margin;
+    height: 1px;
+    background: $green;
+  }
+
+  &::after {
+    @include block-center;
+
+    content: attr(data-year);
+    position: absolute;
+    top: 0;
+    display: inline-flex;
+    width: $year;
+    height: $year;
+    border-radius: 50%;
+    background: $green;
+    font-size: 14px;
+    color: $white;
+  }
+
+  &:nth-of-type(2) {
+    bottom: 50px;
+  }
+
+  &:nth-of-type(3) {
+    bottom: 100px;
+  }
+
+  &:nth-of-type(4) {
+    bottom: 200px;
+  }
+
+  @include device(mobile) {
+    width: 100%;
+    bottom: 0 !important;
+    background: #fff;
+  }
+
+  &.left {
+    margin-right: auto;
+  }
+
+  &.left::before {
+    right: $indent-before;
+
+    @include device(mobile) {
+      display: none;
+    }
+  }
+
+  &.left::after {
+    right: $indent-after;
+
+    @include device(mobile) {
+      right: calc(50% - $year / 2 + 2px);
+      top: -60px;
+    }
+  }
+
+  &.right {
+    margin-left: auto;
+  }
+
+  &.right::before {
+    left: $indent-before;
+
+    @include device(mobile) {
+      display: none;
+    }
+  }
+
+  &.right::after {
+    left: calc($indent-after - $border-left);
+
+    @include device(mobile) {
+      left: calc(50% - $year / 2 - 2px);
+      top: -60px;
+    }
+  }
+}
+
+.animation {
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+  opacity: 1;
+
+  @include device(mobile) {
+    animation: none;
+  }
+
+  &.right {
+    animation-name: work-element-move-from-right;
+  }
+
+  &.left {
+    animation-name: work-element-move-from-left;
+  }
+}
+
+@keyframes work-element-move-from-left {
+  0% {
+    transform: translateX(calc(0px - $animation-hidden));
+  }
+
+  90% {
+    transform: translateX($animation-end-margin);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes work-element-move-from-right {
+  0% {
+    transform: translateX($animation-hidden);
+  }
+
+  90% {
+    transform: translateX(calc(0px - $animation-end-margin));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.description {
+  font-size: 14px;
+  color: $gray;
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  gap: 15px;
+}

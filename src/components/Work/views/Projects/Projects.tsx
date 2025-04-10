@@ -1,44 +1,28 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface ProjectsProps {}
+import { useLang } from "@/services/LangContext";
 
-export const Projects: FC<PropsWithChildren<ProjectsProps>> = ({
-  children,
-}) => {
+import { ProjectProps } from "../../types";
+import { DetailElement } from "../DetailElement/DetailElement";
+import { DetailsWrapper } from "../DetailsWrapper/DetailsWrapper";
+import { ProjectElement } from "../ProjectElement/ProjectElement";
+import styles from "./Projects.module.scss";
+import { translator } from "./translator";
+
+interface ProjectsProps {
+  projects: ProjectProps[];
+}
+
+export const Projects: FC<ProjectsProps> = ({ projects }) => {
+  const lang = useLang();
+
   return (
-    <>
-      <p className="work-element__block-title bold">Проекты</p>
-      <ul className="work-element__projects">
-        <li className="work-element__projects-element work-project">
-          <span className="work-project__title">Интерфейсы support</span>
-          <div className="work-tooltip">
-            <p className="work-project__description">...</p>
-          </div>
-        </li>
-        <li className="work-element__projects-element work-project">
-          <span className="work-project__title">WebTMA</span>
-          <div className="work-tooltip">
-            <p className="work-project__description">
-              Сайт для российской команды поддержки WebTMA webtma.ru (сейчас
-              недоступен)
-            </p>
-          </div>
-        </li>
-        <li className="work-element__projects-element work-project">
-          <span className="work-project__title">
-            RR, DY, Flocktory, Diginetica, Mindbox...
-          </span>
-          <div className="work-tooltip">
-            <p className="work-project__description">...</p>
-          </div>
-        </li>
-        <li className="work-element__projects-element work-project">
-          <span className="work-project__title">more...</span>
-          <div className="work-tooltip">
-            <p className="work-project__description">...</p>
-          </div>
-        </li>
-      </ul>
-    </>
+    <DetailsWrapper title={translator.title[lang]}>
+      {projects.map((project) => (
+        <DetailElement key={project.name} className={styles.project}>
+          <ProjectElement {...project} />
+        </DetailElement>
+      ))}
+    </DetailsWrapper>
   );
 };

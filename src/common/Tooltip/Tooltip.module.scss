@@ -1,0 +1,75 @@
+.tooltip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  width: 250px;
+  padding: 5px 20px;
+  background: $white;
+  color: $text;
+  border: 1px solid $green;
+  border-radius: 15px;
+  font-size: 15px;
+  line-height: 1.3em;
+  z-index: 2;
+
+  @include device(mobile) {
+    @include block-center;
+
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    padding: 0;
+    background: $background-black-opacity;
+    border: none;
+    border-radius: unset;
+    z-index: 100000;
+  }
+
+  @include device(notMobile) {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 30px;
+      border: 10px solid transparent;
+    }
+
+    &::before {
+      border-top: 7px solid $green;
+      bottom: -17px;
+    }
+
+    &::after {
+      border-top: 7px solid $white;
+      bottom: -16px;
+    }
+  }
+}
+
+@include device(mobile) {
+  .mobile {
+    @include block-center;
+
+    width: 90%;
+    min-height: 100px;
+    max-height: 80vh;
+    background: $white;
+    padding: 5px 20px;
+    border-radius: 5px;
+  }
+}
+
+.close {
+  @include reset-button;
+
+  display: none;
+
+  @include device(mobile) {
+    display: inline-block;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    color: $white;
+    font-size: 30px;
+  }
+}

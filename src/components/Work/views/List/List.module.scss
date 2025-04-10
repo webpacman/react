@@ -1,0 +1,25 @@
+@use "../../scss/variables" as *;
+
+.wrapper {
+  position: relative;
+  top: 30px;
+  width: var(--wrapper);
+  margin: 0 auto;
+  padding: 60px 0 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    width: 1px;
+    height: 90%;
+    background: $gray;
+  }
+
+  @include device(mobile) {
+    width: 95%;
+    top: 0;
+    gap: 80px;
+  }
+}

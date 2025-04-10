@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
 
-import { Flex } from "../Flex";
+import { Flex, FlexDirection } from "../Flex";
 import styles from "./Section.module.scss";
 
 interface SectionProps {
@@ -24,6 +24,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
     <>
       <div className={styles.scrollId} id={scrollId} />
       <Flex
+        direction={FlexDirection.COLUMN}
         tag="section"
         center={center}
         className={clsx(styles.section, grey && styles.grey, className)}

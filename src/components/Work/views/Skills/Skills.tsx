@@ -1,23 +1,23 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface SkillsProps {}
+import { useLang } from "@/services/LangContext";
 
-export const Skills: FC<PropsWithChildren<SkillsProps>> = ({ children }) => {
+import { DetailElement } from "../DetailElement/DetailElement";
+import { DetailsWrapper } from "../DetailsWrapper/DetailsWrapper";
+import { translator } from "./translator";
+
+interface SkillsProps {
+  skills: string[];
+}
+
+export const Skills: FC<SkillsProps> = ({ skills }) => {
+  const lang = useLang();
+
   return (
-    <>
-      <p className="work-element__block-title bold">Навыки</p>
-      <ul className="work-element__skills">
-        <li className="work-element__skills-element">html+</li>
-        <li className="work-element__skills-element">css+</li>
-        <li className="work-element__skills-element">javascript+</li>
-        <li className="work-element__skills-element">blockchain</li>
-        <li className="work-element__skills-element">node.js</li>
-        <li className="work-element__skills-element">python</li>
-        <li className="work-element__skills-element">django</li>
-        <li className="work-element__skills-element">mongodb</li>
-        <li className="work-element__skills-element">postgresql</li>
-        <li className="work-element__skills-element">team lead skills</li>
-      </ul>
-    </>
+    <DetailsWrapper title={translator.title[lang]}>
+      {skills.map((skill) => (
+        <DetailElement key={skill}>{skill}</DetailElement>
+      ))}
+    </DetailsWrapper>
   );
 };
