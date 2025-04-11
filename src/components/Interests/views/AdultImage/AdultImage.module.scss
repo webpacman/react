@@ -1,0 +1,40 @@
+.wrapper {
+  max-height: 270px;
+  margin-bottom: 20px;
+}
+
+.overlay {
+  position: relative;
+  width: 100%;
+}
+
+.block {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.text {
+  position: absolute;
+  padding: 0 20px;
+  z-index: 2;
+  text-align: center;
+}
+
+.image {
+  width: 200px;
+  filter: blur(0);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+
+  @include device(mobileTablet) {
+    width: 150px;
+  }
+
+  &.overlay {
+    filter: blur(20px);
+  }
+}

@@ -1,3 +1,7 @@
 .wrapper {
-  color: purple;
+  padding: 40px 20px;
+
+  @include device(mobileTablet) {
+    padding: 40px 10px;
+  }
 }

@@ -10,14 +10,14 @@ export interface ImageProps {
 }
 
 interface ImagePopupProps {
-  index: number;
+  index?: number;
   fullScreen?: boolean;
   className?: string;
   handleImageClick?: (index: number) => void;
 }
 
 export const ImagePopup: FC<ImagePopupProps & ImageProps> = ({
-  index,
+  index = 0,
   src,
   description,
   fullScreen = false,

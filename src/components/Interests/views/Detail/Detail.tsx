@@ -1,36 +1,36 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface DetailProps {}
+import { Flex, FlexAlign, FlexDirection } from "@/common/Flex";
 
-export const Detail: FC<PropsWithChildren<DetailProps>> = ({ children }) => {
+import { InterestDetailProps } from "../../types";
+import { AdultImage } from "../AdultImage/AdultImage";
+import styles from "./Detail.module.scss";
+
+interface DetailProps {
+  detail: InterestDetailProps;
+}
+
+export const Detail: FC<DetailProps> = ({ detail }) => {
+  const { title, descriptions, image, imageDescription, isAdult } = detail;
+
   return (
-    <div className="interest-wrapper">
-      <div className="overlay block-center">
-        <div className="overlay__block block-center">
-          <p className="overlay__text bold">
-            Нажимая, Вы подтверждаете свой возраст&nbsp;&nbsp;18&nbsp;лет.
-          </p>
-        </div>
-        <img
-          src="images/vshevchuk.webp"
-          alt=""
-          className="interest-image overlay__image"
-        />
-      </div>
+    <Flex
+      align={FlexAlign.CENTER}
+      direction={FlexDirection.COLUMN}
+      className={styles.wrapper}
+    >
+      <AdultImage
+        src={image}
+        description={imageDescription}
+        isAdult={isAdult}
+      />
 
-      <p className="interest-title bold">Lorem ipsum dolor sit amet.</p>
-      <p className="interest-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus est
-        iure laborum magni neque nihil nostrum, nulla quam quia sint?
-      </p>
-      <p className="interest-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus est
-        iure laborum magni neque nihil nostrum, nulla quam quia sint?
-      </p>
-      <p className="interest-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus est
-        iure laborum magni neque nihil nostrum, nulla quam quia sint?
-      </p>
-    </div>
+      <p className={styles.title}>{title}</p>
+      {descriptions.map((description, idx) => (
+        <p key={idx} className={styles.text}>
+          {description}
+        </p>
+      ))}
+    </Flex>
   );
 };

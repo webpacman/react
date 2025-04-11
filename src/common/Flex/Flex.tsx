@@ -14,6 +14,7 @@ export enum FlexJustify {
   END = "justifyEnd",
   BETWEEN = "justifyBetween",
   EVENLY = "justifyEvenly",
+  AROUND = "justifyAround",
 }
 
 export enum FlexAlign {

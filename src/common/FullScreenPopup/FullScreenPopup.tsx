@@ -9,13 +9,13 @@ import styles from "./FullscreenPopup.module.scss";
 
 interface FullScreenPopupProps {
   images: ImageProps[];
-  initialIndex: number;
+  initialIndex?: number;
   onClose: () => void;
 }
 
 export const FullScreenPopup: FC<FullScreenPopupProps> = ({
   images,
-  initialIndex,
+  initialIndex = 0,
   onClose,
 }) => {
   const [isShow, setIsShow] = useState(true);
