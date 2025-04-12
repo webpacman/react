@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { Flex, FlexAlign, FlexDirection, FlexDisplay } from "../Flex";
 import { ImagePopup, ImageProps } from "../ImagePopup";
 import { Slider } from "../Slider/Slider";
-import styles from "./FullscreenPopup.module.scss";
+import styles from "./FullScreenPopup.module.scss";
 
 interface FullScreenPopupProps {
   images: ImageProps[];
