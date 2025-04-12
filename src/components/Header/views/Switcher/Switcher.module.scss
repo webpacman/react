@@ -19,11 +19,9 @@
   height: 35px;
   width: 135px;
   padding: 0 10px;
-
   background: $green;
   border-radius: 20px;
   opacity: 0.9;
-
   transition: opacity 0.25s ease;
   cursor: pointer;
 
@@ -43,7 +41,6 @@
   position: absolute;
   z-index: 1;
   border-radius: 20px;
-
   transition: left 0.25s ease-in-out;
 
   &.ru {
