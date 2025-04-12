@@ -1,0 +1,36 @@
+.form {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @include device(maxLaptop) {
+    max-width: 95%;
+  }
+
+  &.blur {
+    @include blur;
+  }
+}
+
+.submit {
+  display: block;
+  height: 45px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: auto;
+  border: none;
+  border-radius: 2px;
+  background: $green;
+  outline: none;
+  box-shadow: none;
+  color: $white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}

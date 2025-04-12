@@ -1,21 +1,29 @@
-import { FC, PropsWithChildren } from "react";
+import clsx from "clsx";
+import { FC } from "react";
 
-interface InputBlockProps {}
+import { FieldProps } from "../../types";
+import { Label } from "../Label/Label";
+import styles from "./InputBlock.module.scss";
 
-export const InputBlock: FC<PropsWithChildren<InputBlockProps>> = ({
-  children,
+interface InputBlockProps extends FieldProps {
+  position: "left" | "right";
+}
+
+export const InputBlock: FC<InputBlockProps> = ({
+  label,
+  name,
+  placeHolder,
+  position,
 }) => {
   return (
-    <div className="input-wrapper left">
-      <label className="label bold" htmlFor="name">
-        Имя
-      </label>
+    <div className={clsx(styles.wrapper, styles[position])}>
+      <Label htmlFor={name}>{label}</Label>
       <input
-        className="input"
+        className={styles.input}
         type="text"
-        name="name"
-        id="name"
-        placeholder="Введите ваше имя"
+        name={name}
+        id={name}
+        placeholder={placeHolder}
         required
       />
     </div>

@@ -1,46 +1,67 @@
-import { FC, PropsWithChildren } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import { useFormStatus } from "react-dom";
 
+import { Flex, FlexJustify } from "@/common/Flex";
+import { useLang } from "@/services/LangContext";
+
+import { sendContacts } from "../../api";
+import { ResultCode } from "../../constants";
 import { InputBlock } from "../InputBlock/InputBlock";
 import { TextareaBlock } from "../TextareaBlock/TextareaBlock";
-interface FormProps {}
+import styles from "./Form.module.scss";
+import { translator } from "./translator";
 
-export const Form: FC<PropsWithChildren<FormProps>> = ({ children }) => {
+interface FormProps {
+  setResult: Dispatch<SetStateAction<ResultCode | undefined>>;
+  disabled: boolean;
+}
+
+export const Form: FC<FormProps> = ({ setResult, disabled }) => {
+  const lang = useLang();
+
+  const { pending } = useFormStatus();
+
+  const submitAction = async (formData: FormData) => {
+    if (disabled) {
+      return;
+    }
+
+    const result = await sendContacts(formData);
+    setResult(result.code);
+
+    if (!result.success) {
+      setTimeout(() => {
+        setResult(undefined);
+      }, 3000);
+    }
+  };
+
   return (
-    <form action="" className="contact-me__form">
-      <InputBlock />
-      <div className="input-wrapper left">
-        <label className="label bold" htmlFor="name">
-          Имя
-        </label>
-        <input
-          className="input"
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Введите ваше имя"
-          required
-        />
-      </div>
-      <div className="input-wrapper right">
-        <label className="label bold" htmlFor="email">
-          E-mail
-        </label>
-        <input
-          className="input"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Введите ваш e-mail адрес"
-          required
-        />
-      </div>
-      <div className="cls"></div>
+    <Flex
+      tag="form"
+      justify={FlexJustify.BETWEEN}
+      className={styles.form}
+      action={submitAction}
+    >
+      <InputBlock
+        name="name"
+        label={translator.name[lang].label}
+        placeHolder={translator.name[lang].placeHolder}
+        position="left"
+      />
+
+      <InputBlock
+        name="email"
+        label={translator.email[lang].label}
+        placeHolder={translator.email[lang].placeHolder}
+        position="right"
+      />
 
       <TextareaBlock />
 
-      <button type="submit" className="submit">
-        Отправить
+      <button type="submit" className={styles.submit} disabled={pending}>
+        {translator.submit[lang].placeHolder}
       </button>
-    </form>
+    </Flex>
   );
 };

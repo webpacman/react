@@ -1,8 +1,6 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface AboutProps {}
-
-export const About: FC<PropsWithChildren<AboutProps>> = ({ children }) => {
+export const About: FC = () => {
   return (
     <p className="footer-about">
       &copy;&nbsp;Шевчук&nbsp;Виталий 1995&nbsp;-&nbsp;2023

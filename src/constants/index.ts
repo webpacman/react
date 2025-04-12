@@ -8,3 +8,5 @@ export enum Section {
   BOOKS = "books",
   CONTACT_ME = "contactMe",
 }
+
+export const ALREADY_SEND_KEY = "already_send";

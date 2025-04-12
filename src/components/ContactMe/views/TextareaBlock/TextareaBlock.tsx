@@ -1,19 +1,21 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface TextareaBlockProps {}
+import { useLang } from "@/services/LangContext";
 
-export const TextareaBlock: FC<PropsWithChildren<TextareaBlockProps>> = ({
-  children,
-}) => {
+import { Label } from "../Label/Label";
+import styles from "./TextareaBlock.module.scss";
+import { translator } from "./translator";
+
+export const TextareaBlock: FC = () => {
+  const lang = useLang();
+
   return (
-    <div className="textarea-wrapper">
-      <label className="label bold" htmlFor="message">
-        Сообщение
-      </label>
+    <div className={styles.wrapper}>
+      <Label htmlFor="message">{translator.message[lang].label}</Label>
       <textarea
-        className="textarea"
+        className={styles.textarea}
         name="message"
-        placeholder="Подробно опишите, с какой целью хотите связаться со мной"
+        placeholder={translator.message[lang].placeHolder}
         id="message"
         cols={30}
         rows={10}

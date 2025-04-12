@@ -1,8 +1,6 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 
-interface SocialsProps {}
-
-export const Socials: FC<PropsWithChildren<SocialsProps>> = ({ children }) => {
+export const Socials: FC = () => {
   return (
     <ul className="socials">
       <li className="social-element">

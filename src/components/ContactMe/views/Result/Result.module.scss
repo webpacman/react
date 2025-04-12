@@ -1,0 +1,17 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+  background: $background-light-black-opacity;
+}
+
+.content {
+  max-width: 1200px;
+  font-size: 20px;
+  color: $white;
+
+  @include device(maxLaptop) {
+    font-size: 18px;
+    max-width: 90%;
+    text-align: center;
+  }
+}
