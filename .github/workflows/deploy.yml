@@ -28,6 +28,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Copy additional files
+        run: |
+          cp .env dist/
+          cp -r _ajax dist/
+
       - name: Deploy to reg.ru
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
