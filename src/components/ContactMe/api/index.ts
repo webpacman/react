@@ -26,10 +26,11 @@ export const sendContacts = async (
       body: formData,
     });
 
-    console.debug(await response.text());
-    console.debug(response);
+    const data = await response.json();
 
-    if (response.status !== 200) {
+    console.debug(data);
+
+    if (data.status !== "success") {
       return {
         success: false,
         code: ResultCode.ERROR_REQUEST,
