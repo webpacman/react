@@ -28,8 +28,6 @@ export const sendContacts = async (
 
     const data = await response.json();
 
-    console.debug(data);
-
     if (data.status !== "success") {
       return {
         success: false,
