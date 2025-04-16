@@ -65,3 +65,15 @@
 @mixin blur {
   filter: blur(5px);
 }
+
+@mixin link {
+  color: $green;
+  fill: $green;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
+}

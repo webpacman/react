@@ -1,0 +1,11 @@
+.socials {
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.link {
+  @include link;
+
+  width: 25px;
+  height: 25px;
+}
