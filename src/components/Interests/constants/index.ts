@@ -3,6 +3,6 @@ export enum InterestKey {
   COMICS = "comics",
   GAMES = "games",
   SPORT = "sport",
-  //HOOKAH = "hookah",
+  HOOKAH = "hookah",
   OTHER = "other",
 }

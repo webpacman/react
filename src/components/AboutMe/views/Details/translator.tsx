@@ -17,24 +17,23 @@ export const translator: Translator<
   },
   smallDescription: {
     [LangVariant.RU]: "Все мы немножко fullstack...",
-    [LangVariant.ENG]: "You know, I’m something of a fullstack myself...",
+    [LangVariant.ENG]: "You know, I'm something of a fullstack myself...",
     [LangVariant.CHI]: "我们都是全栈开发人员...",
   },
   description1: {
     [LangVariant.RU]: (
       <>
-        Я ведущий веб-разработчик со стажем {workExperience} лет. Начинал свой
-        путь с написания небольших сайтов для знакомых, успел поработать в
-        стартапе (больше не хочу), попробовал множество языков программирования
-        и технологий.
+        Я веб-разработчик со стажем {workExperience} лет. Начинал свой путь с
+        написания небольших сайтов для знакомых, успел поработать в стартапе
+        (больше не хочу), попробовал множество языков программирования и
+        технологий.
       </>
     ),
     [LangVariant.ENG]: (
       <>
-        I'm a leading web developer with {workExperience} years of experience. I
-        started my journey with writing small websites for friends, worked in a
-        startup (no more, thank you), tried many programming languages and
-        technologies.
+        I'm a web developer with {workExperience} years of experience. I started
+        my journey with writing small websites for friends, worked in a startup
+        (no more, thank you), tried many programming languages and technologies.
       </>
     ),
     [LangVariant.CHI]: (
@@ -95,8 +94,8 @@ export const translator: Translator<
         <Link href="https://moydameti.ru/" target="_blank">
           Мой&nbsp;да&nbsp;мети
         </Link>
-        . Стараюсь активно изучать framework Laravel или React и побольше{" "}
-        времени проводить с семьей.
+        . Стараюсь стабильно заниматься спортом и побольше времени проводить с{" "}
+        семьей.
       </>
     ),
     [LangVariant.ENG]: (
@@ -106,8 +105,7 @@ export const translator: Translator<
         <Link href="https://moydameti.ru/" target="_blank">
           Moy&nbsp;da&nbsp;meti
         </Link>
-        . I try to actively study framework Laravel or React and spend more{" "}
-        времени проводить с семьей.
+        . I try to exercise regularly and spend more time with my family.
       </>
     ),
     [LangVariant.CHI]: (
@@ -116,7 +114,7 @@ export const translator: Translator<
         <Link href="https://moydameti.ru/" target="_blank">
           Moy&nbsp;da&nbsp;meti
         </Link>
-        。我努力积极学习framework Laravel或React，并花更多时间与家人在一起。
+        。我尝试定期锻炼并花更多时间陪伴家人。
       </>
     ),
   },
