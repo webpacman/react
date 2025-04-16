@@ -49,7 +49,11 @@ export const AdultImage: FC<AdultImageProps> = ({
       <img
         src={src}
         alt={description}
-        className={clsx(styles.image, !approve && styles.overlay)}
+        className={clsx(
+          styles.image,
+          isAdult && styles.adult,
+          !approve && styles.overlay
+        )}
         onClick={handleClick}
       />
       {showPopup && (

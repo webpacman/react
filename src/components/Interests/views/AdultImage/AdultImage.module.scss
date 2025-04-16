@@ -1,6 +1,10 @@
 .wrapper {
   max-height: 270px;
   margin-bottom: 20px;
+
+  @include device(notMobile) {
+    height: 270px;
+  }
 }
 
 .overlay {
@@ -30,11 +34,19 @@
   transition: all 0.1s ease-in;
   cursor: pointer;
 
-  @include device(mobileTablet) {
+  @include device(mobile) {
     width: 150px;
   }
 
   &.overlay {
     filter: blur(20px);
+  }
+
+  &.adult {
+    width: 100%;
+
+    @include device(mobileTablet) {
+      width: 90%;
+    }
   }
 }
