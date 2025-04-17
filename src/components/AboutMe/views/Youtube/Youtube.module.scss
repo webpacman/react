@@ -1,5 +1,10 @@
 .wrapper {
-  max-width: 1200px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include device(mobileTablet) {
+    width: 100%;
+  }
 }
 
 .container {
