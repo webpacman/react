@@ -1,11 +1,15 @@
 import clsx from "clsx";
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
+import { SectionType } from "@/constants";
+import { useSectionContext } from "@/services/SectionContext";
 
 import { Flex, FlexDirection } from "../Flex";
 import styles from "./Section.module.scss";
 
-interface SectionProps {
-  scrollId: string;
+export interface SectionProps {
+  scrollId: SectionType;
   grey?: boolean;
   className?: string;
   center?: boolean;
@@ -18,17 +22,35 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
   center = false,
   className,
 }) => {
-  // TODO: add observer
+  const { setActiveSection } = useSectionContext();
+
+  const { ref, inView } = useInView({
+    threshold: [0.4, 0.7],
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setActiveSection(scrollId);
+    }
+  }, [inView, setActiveSection]);
 
   return (
     <>
-      <div className={styles.scrollId} id={scrollId} />
+      {scrollId !== SectionType.HOME && (
+        <div className={styles.scrollId} id={scrollId} />
+      )}
       <Flex
+        id={scrollId === SectionType.HOME ? scrollId : undefined}
         direction={FlexDirection.COLUMN}
         tag="section"
         center={center}
-        className={clsx(styles.section, grey && styles.grey, className)}
+        className={clsx(
+          scrollId !== SectionType.HOME && styles.section,
+          grey && styles.grey,
+          className
+        )}
         data-id={scrollId}
+        ref={ref}
       >
         {children}
       </Flex>

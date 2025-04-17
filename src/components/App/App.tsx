@@ -1,4 +1,4 @@
-import "~/scss/main.scss";
+import { SectionContextProvider } from "@/services/SectionContext";
 
 import { AboutMe } from "../AboutMe";
 import { Achievements } from "../Achievements";
@@ -11,9 +11,9 @@ import { Skills } from "../Skills";
 import { Welcome } from "../Welcome";
 import { Work } from "../Work";
 
-export const App = () => {
+const App = () => {
   return (
-    <>
+    <SectionContextProvider>
       <Header />
       <Welcome />
       <AboutMe />
@@ -24,6 +24,8 @@ export const App = () => {
       <Books />
       <ContactMe />
       <Footer />
-    </>
+    </SectionContextProvider>
   );
 };
+
+export default App;

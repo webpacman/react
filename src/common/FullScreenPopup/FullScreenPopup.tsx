@@ -56,7 +56,6 @@ export const FullScreenPopup: FC<FullScreenPopupProps> = ({
         direction={FlexDirection.COLUMN}
         align={FlexAlign.CENTER}
         className={styles.popup}
-        onClick={(e) => e.stopPropagation()}
       >
         <Flex
           tag="button"

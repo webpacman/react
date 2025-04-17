@@ -1,4 +1,4 @@
-export enum Section {
+export enum SectionType {
   HOME = "home",
   ABOUT_ME = "aboutMe",
   ACHIEVEMENTS = "achievements",

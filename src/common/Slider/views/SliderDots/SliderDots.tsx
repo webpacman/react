@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 import { Flex, FlexJustify } from "@/common/Flex";
 
@@ -8,7 +8,7 @@ import styles from "./SliderDots.module.scss";
 interface SliderDotsProps {
   totalSlides: number;
   currentSlide: number;
-  onDotClick: (index: number) => void;
+  onDotClick: (index: number) => (e?: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const SliderDots: FC<SliderDotsProps> = ({
@@ -22,7 +22,7 @@ export const SliderDots: FC<SliderDotsProps> = ({
         <button
           key={index}
           className={clsx(styles.dot, currentSlide === index && styles.active)}
-          onClick={() => onDotClick(index)}
+          onClick={onDotClick(index)}
           aria-label={`Перейти к слайду ${index + 1}`}
         />
       ))}

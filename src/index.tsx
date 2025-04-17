@@ -1,17 +1,23 @@
-import { StrictMode } from "react";
+import "~/scss/main.scss";
+
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 
-import { App } from "./components/App/App";
-import { LangContextProvider } from "./services/LangContext/LangContext";
+import { Spinner } from "./common/Spinner";
+import { LangContextProvider } from "./services/LangContext";
+
+const AppLazy = lazy(() => import("./components/App/App"));
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = createRoot(rootElement);
   root.render(
     <StrictMode>
-      <LangContextProvider>
-        <App />
-      </LangContextProvider>
+      <Suspense fallback={<Spinner center fullScreen />}>
+        <LangContextProvider>
+          <AppLazy />
+        </LangContextProvider>
+      </Suspense>
     </StrictMode>
   );
 }

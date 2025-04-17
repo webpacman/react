@@ -4,6 +4,11 @@
   padding: 0 0 20px 20px;
   border-left: 1px solid $gray;
 
+  @include device(laptopDesktop) {
+    position: sticky;
+    top: 100px;
+  }
+
   @include device(tablet) {
     @include block-center;
 

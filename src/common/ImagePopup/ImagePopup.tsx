@@ -28,7 +28,10 @@ export const ImagePopup: FC<ImagePopupProps & ImageProps> = ({
     (e: React.MouseEvent) => {
       e.preventDefault();
 
-      if (fullScreen) return;
+      if (fullScreen) {
+        e.stopPropagation();
+        return;
+      }
 
       handleImageClick?.(index);
     },

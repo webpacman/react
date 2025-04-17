@@ -6,6 +6,10 @@
   transition: color 0.25s ease-in-out;
   z-index: 2;
   cursor: pointer;
+
+  @include device(tablet) {
+    font-size: 13px;
+  }
 }
 
 .input {

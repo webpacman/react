@@ -56,15 +56,15 @@
   }
 
   @include device(tablet) {
-    width: 30px;
+    width: 28px;
     height: 25px;
 
     &.ru {
-      left: 8px;
+      left: 9px;
     }
 
     &.eng {
-      left: 35px;
+      left: 36px;
     }
 
     &.chi {

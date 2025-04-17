@@ -1,15 +1,20 @@
-.photo {
+.wrapper {
   position: absolute;
-  z-index: 3;
-  bottom: -100px;
   left: 0;
+  bottom: -150px;
+  height: 100%;
   width: 50%;
 
   @include device(tablet) {
+    justify-content: center;
     position: relative;
-    width: 90%;
-    bottom: -200px;
+    width: 100%;
+    bottom: -250px;
     order: 2;
+  }
+
+  @include device(tabletLandscape) {
+    bottom: -150px;
   }
 
   @include device(mobile) {
@@ -18,9 +23,19 @@
     bottom: 0;
     order: 2;
   }
+}
 
-  @include device(tabletLandscape) {
-    width: 50%;
-    bottom: -230px;
+.photo {
+  width: 100%;
+
+  @include device(tablet) {
+    height: inherit;
+    width: auto;
+    max-width: 100%;
+  }
+
+  @include device(mobile) {
+    align-self: flex-end;
+    max-height: -webkit-fill-available;
   }
 }

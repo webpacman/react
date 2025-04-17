@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 
 import { Section } from "@/common/Section";
 import { Title } from "@/common/Title";
-import { ALREADY_SEND_KEY } from "@/constants";
+import { ALREADY_SEND_KEY, SectionType } from "@/constants";
 import { useLang } from "@/services/LangContext";
 
 import { ResultCode } from "../../constants";
@@ -21,7 +21,7 @@ export const ContactMe: FC = () => {
   );
 
   return (
-    <Section scrollId="contact-me" className={styles.wrapper}>
+    <Section scrollId={SectionType.CONTACT_ME} className={styles.wrapper}>
       <div className={result && styles.blur}>
         <Title as="h2">{translator.title[lang]}</Title>
         <Form setResult={setResult} disabled={!!result} />

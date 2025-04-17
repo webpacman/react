@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from "react";
 
 import styles from "./Flex.module.scss";
 
@@ -37,6 +37,7 @@ type FlexProps<T extends ElementType = "div" | "img"> = {
   center?: boolean;
   className?: string;
   tag?: T;
+  ref?: Ref<HTMLElement>;
 } & Omit<ComponentPropsWithoutRef<T>, "className">;
 
 export const Flex = <T extends ElementType = "div">({

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import {
   FC,
+  MouseEvent,
   ReactNode,
   useCallback,
   useEffect,
@@ -85,56 +86,68 @@ export const Slider: FC<SliderProps> = ({
     [currentSlide, countInView, itemWidth]
   );
 
-  const handleNext = useCallback(() => {
-    if (totalItems <= countInView) return;
+  const handleNext = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation();
 
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+      if (totalItems <= countInView) return;
 
-    if (currentSlide >= totalSlides - 1) {
-      if (infinity) {
-        setCurrentSlide(0);
+      if (isTransitioning) return;
+      setIsTransitioning(true);
+
+      if (currentSlide >= totalSlides - 1) {
+        if (infinity) {
+          setCurrentSlide(0);
+        } else {
+          setIsTransitioning(false);
+        }
       } else {
-        setIsTransitioning(false);
+        setCurrentSlide((prev) => prev + 1);
       }
-    } else {
-      setCurrentSlide((prev) => prev + 1);
-    }
-  }, [
-    totalItems,
-    countInView,
-    isTransitioning,
-    currentSlide,
-    totalSlides,
-    infinity,
-  ]);
+    },
+    [
+      totalItems,
+      countInView,
+      isTransitioning,
+      currentSlide,
+      totalSlides,
+      infinity,
+    ]
+  );
 
-  const handlePrev = useCallback(() => {
-    if (totalItems <= countInView) return;
+  const handlePrev = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation();
 
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+      if (totalItems <= countInView) return;
 
-    if (currentSlide <= 0) {
-      if (infinity) {
-        setCurrentSlide(totalSlides - 1);
+      if (isTransitioning) return;
+      setIsTransitioning(true);
+
+      if (currentSlide <= 0) {
+        if (infinity) {
+          setCurrentSlide(totalSlides - 1);
+        } else {
+          setIsTransitioning(false);
+        }
       } else {
-        setIsTransitioning(false);
+        setCurrentSlide((prev) => prev - 1);
       }
-    } else {
-      setCurrentSlide((prev) => prev - 1);
-    }
-  }, [
-    totalItems,
-    countInView,
-    isTransitioning,
-    currentSlide,
-    infinity,
-    totalSlides,
-  ]);
+    },
+    [
+      totalItems,
+      countInView,
+      isTransitioning,
+      currentSlide,
+      infinity,
+      totalSlides,
+    ]
+  );
 
   const handleDotClick = useCallback(
-    (index: number) => {
+    (index: number) => (e?: MouseEvent<HTMLButtonElement>) => {
+      e?.stopPropagation();
+
       if (isTransitioning) return;
 
       setIsTransitioning(true);

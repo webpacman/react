@@ -1,4 +1,4 @@
-import { Section } from "@/constants";
+import { SectionType } from "@/constants";
 import { useLang } from "@/services/LangContext";
 
 import HomeIcon from "./assets/home.svg?react";
@@ -8,11 +8,11 @@ import { translator } from "./translator";
 export const useNavigation = () => {
   const lang = useLang();
 
-  return Object.values(Section).map((section) => {
+  return Object.values(SectionType).map((section) => {
     return {
       section,
       content:
-        section === Section.HOME ? (
+        section === SectionType.HOME ? (
           <HomeIcon className={styles.home} />
         ) : (
           translator[section][lang]

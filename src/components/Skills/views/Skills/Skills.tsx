@@ -3,6 +3,7 @@ import { FC, PropsWithChildren } from "react";
 import { Section } from "@/common/Section";
 import { SectionDescription } from "@/common/SectionDescription";
 import { Title } from "@/common/Title";
+import { SectionType } from "@/constants";
 import { useLang } from "@/services/LangContext";
 
 import { ContentWrapper } from "../ContentWrapper/ContentWrapper";
@@ -13,7 +14,7 @@ export const Skills: FC<PropsWithChildren> = () => {
   const lang = useLang();
 
   return (
-    <Section scrollId="skills" className={styles.wrapper}>
+    <Section scrollId={SectionType.SKILLS} className={styles.wrapper}>
       <Title as="h2">{translator.title[lang]}</Title>
 
       <SectionDescription>{translator.description[lang]}</SectionDescription>

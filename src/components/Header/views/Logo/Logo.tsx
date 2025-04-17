@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Link, LinkTheme } from "@/common/Link";
-import { Section } from "@/constants";
+import { SectionType } from "@/constants";
 import { useLang } from "@/services/LangContext";
 import { getAnchorLink } from "@/utils/getAnchorLink";
 
@@ -13,7 +13,7 @@ export const Logo: FC = () => {
 
   return (
     <Link
-      href={getAnchorLink(Section.HOME)}
+      href={getAnchorLink(SectionType.HOME)}
       theme={LinkTheme.WHITE}
       className={styles.logo}
     >

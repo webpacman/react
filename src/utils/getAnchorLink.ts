@@ -1,3 +1,3 @@
-import { Section } from "@/constants";
+import { SectionType } from "@/constants";
 
-export const getAnchorLink = (section: Section) => `#${section}`;
+export const getAnchorLink = (section: SectionType) => `#${section}`;
