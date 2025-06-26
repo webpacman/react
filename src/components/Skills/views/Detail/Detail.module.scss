@@ -34,6 +34,7 @@
 .icon {
   flex: 1 1 30%;
   width: 150px;
+  height: auto;
   max-height: max-content;
 
   @include device(tablet) {
